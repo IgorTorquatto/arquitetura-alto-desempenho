@@ -1,0 +1,13 @@
+    SW[0] = RESET (sempre ativo)
+
+    SW[1] = ENTER/OK/SELECT (para menus) e SPACE (para jogo)
+
+    SW[2] = PAUSE 
+
+    KEY[0] = UP (menu) / LEFT (seleção stage)
+
+    KEY[1] = DOWN (menu) / RIGHT (seleção stage)
+
+    KEY[2] = LEFT (jogo)
+
+    KEY[3] = RIGHT (jogo)

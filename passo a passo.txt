@@ -1,0 +1,30 @@
+Instalar quartus (Baixe essa versão)
+
+https://archive.org/download/90-quartus-free
+90_quartus_free.exe
+
+Conecte a placa no computador com o cabo usb
+
+Baixar esse repositório ou o original game.zip:
+https://github.com/Cesarsk/the_snake_game/tree/master 
+
+extrair e excluir pastas
+db
+incremental_db
+output_files
+
+Abrir o quartus -> file-> open project-> abrir pasta do projeto já extraido-> abrir arquivo the_snake_game.qpf
+
+Clicar start_compilation
+
+Quando a compilação terminar:
+
+Concete o vga na placa e no monitor
+
+No quartus-> tools-> programmer->hardware setup->usb blaster-> mode jtag->
+
+Selecionar o output_files/the_snake_game.sof
+
+Deixar marcado a checkbox program/configure
+
+Clicar em start

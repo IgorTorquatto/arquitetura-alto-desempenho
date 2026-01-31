@@ -1,5 +1,5 @@
 Analysis & Synthesis report for the_snake_game
-Sat Jan 31 16:38:21 2026
+Sat Jan 31 17:15:21 2026
 Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
 
 
@@ -19,12 +19,8 @@ Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
  11. General Register Statistics
  12. Inverted Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst
- 15. Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst
- 16. Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst
- 17. Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst
- 18. Port Connectivity Checks: "button_controller:button_controller_u0"
- 19. Analysis & Synthesis Messages
+ 14. Port Connectivity Checks: "finite_state_machine:finite_state_machine_u0"
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -50,16 +46,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jan 31 16:38:21 2026   ;
+; Analysis & Synthesis Status        ; Successful - Sat Jan 31 17:15:21 2026   ;
 ; Quartus II Version                 ; 9.0 Build 132 02/25/2009 SJ Web Edition ;
 ; Revision Name                      ; the_snake_game                          ;
 ; Top-level Entity Name              ; the_snake_game                          ;
 ; Family                             ; Cyclone II                              ;
-; Total logic elements               ; 11,023                                  ;
-;     Total combinational functions  ; 10,872                                  ;
-;     Dedicated logic registers      ; 1,996                                   ;
-; Total registers                    ; 1996                                    ;
-; Total pins                         ; 58                                      ;
+; Total logic elements               ; 10,764                                  ;
+;     Total combinational functions  ; 10,610                                  ;
+;     Dedicated logic registers      ; 1,883                                   ;
+; Total registers                    ; 1883                                    ;
+; Total pins                         ; 75                                      ;
 ; Total virtual pins                 ; 0                                       ;
 ; Total memory bits                  ; 0                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                       ;
@@ -146,7 +142,6 @@ applicable agreement for further details.
 +----------------------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; File Name with User-Entered Path             ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                                                                                     ;
 +----------------------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; vhdl_files/debouncer.vhd                     ; yes             ; User VHDL File  ; C:/Users/cicer/Downloads/[PLANEJAMENTO] UFCA/[UFCA] 2025.2/Arquitetura de Alto Desempenho/Projeto Final/the_snake_game-master/the_snake_game-master/vhdl_files/debouncer.vhd                     ;
 ; vhdl_files/peripherals/button_controller.vhd ; yes             ; User VHDL File  ; C:/Users/cicer/Downloads/[PLANEJAMENTO] UFCA/[UFCA] 2025.2/Arquitetura de Alto Desempenho/Projeto Final/the_snake_game-master/the_snake_game-master/vhdl_files/peripherals/button_controller.vhd ;
 ; vhdl_files/logic/gui/stages.vhd              ; yes             ; User VHDL File  ; C:/Users/cicer/Downloads/[PLANEJAMENTO] UFCA/[UFCA] 2025.2/Arquitetura de Alto Desempenho/Projeto Final/the_snake_game-master/the_snake_game-master/vhdl_files/logic/gui/stages.vhd              ;
 ; vhdl_files/logic/gui/texts.vhd               ; yes             ; User VHDL File  ; C:/Users/cicer/Downloads/[PLANEJAMENTO] UFCA/[UFCA] 2025.2/Arquitetura de Alto Desempenho/Projeto Final/the_snake_game-master/the_snake_game-master/vhdl_files/logic/gui/texts.vhd               ;
@@ -172,56 +167,52 @@ applicable agreement for further details.
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimated Total logic elements              ; 11,023   ;
+; Estimated Total logic elements              ; 10,764   ;
 ;                                             ;          ;
-; Total combinational functions               ; 10872    ;
+; Total combinational functions               ; 10610    ;
 ; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 3941     ;
-;     -- 3 input functions                    ; 4710     ;
-;     -- <=2 input functions                  ; 2221     ;
+;     -- 4 input functions                    ; 3829     ;
+;     -- 3 input functions                    ; 4707     ;
+;     -- <=2 input functions                  ; 2074     ;
 ;                                             ;          ;
 ; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 6736     ;
-;     -- arithmetic mode                      ; 4136     ;
+;     -- normal mode                          ; 6580     ;
+;     -- arithmetic mode                      ; 4030     ;
 ;                                             ;          ;
-; Total registers                             ; 1996     ;
-;     -- Dedicated logic registers            ; 1996     ;
+; Total registers                             ; 1883     ;
+;     -- Dedicated logic registers            ; 1883     ;
 ;     -- I/O registers                        ; 0        ;
 ;                                             ;          ;
-; I/O pins                                    ; 58       ;
+; I/O pins                                    ; 75       ;
 ; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 1870     ;
-; Total fan-out                               ; 39936    ;
-; Average fan-out                             ; 3.09     ;
+; Maximum fan-out                             ; 1757     ;
+; Total fan-out                               ; 39040    ;
+; Average fan-out                             ; 3.11     ;
 +---------------------------------------------+----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                               ;
-+----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                               ; Library Name ;
-+----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
-; |the_snake_game                                    ; 10872 (1)         ; 1996 (0)     ; 0           ; 0            ; 0       ; 0         ; 58   ; 0            ; |the_snake_game                                                                                   ; work         ;
-;    |button_controller:button_controller_u0|        ; 246 (78)          ; 134 (42)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0                                            ; work         ;
-;       |debouncer:\gen_debouncers:0:debouncer_inst| ; 42 (42)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst ; work         ;
-;       |debouncer:\gen_debouncers:1:debouncer_inst| ; 42 (42)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst ; work         ;
-;       |debouncer:\gen_debouncers:2:debouncer_inst| ; 42 (42)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst ; work         ;
-;       |debouncer:\gen_debouncers:3:debouncer_inst| ; 42 (42)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst ; work         ;
-;    |difficulty:difficulty_u0|                      ; 12 (12)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|difficulty:difficulty_u0                                                          ; work         ;
-;    |finite_state_machine:finite_state_machine_u0|  ; 115 (115)         ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|finite_state_machine:finite_state_machine_u0                                      ; work         ;
-;    |items:items_u0|                                ; 299 (299)         ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|items:items_u0                                                                    ; work         ;
-;    |level:level_u0|                                ; 24 (24)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|level:level_u0                                                                    ; work         ;
-;    |lives:lives_u0|                                ; 10 (10)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|lives:lives_u0                                                                    ; work         ;
-;    |score:score_u0|                                ; 77 (15)           ; 23 (7)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|score:score_u0                                                                    ; work         ;
-;       |four_digit_counter:four_digit_counter_u0|   ; 62 (62)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0                           ; work         ;
-;    |snake:snake_u0|                                ; 8630 (8630)       ; 1702 (1702)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|snake:snake_u0                                                                    ; work         ;
-;    |stages:stages_u0|                              ; 141 (141)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|stages:stages_u0                                                                  ; work         ;
-;    |texts:texts_u0|                                ; 1248 (1227)       ; 11 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|texts:texts_u0                                                                    ; work         ;
-;       |font_rom:font_unit|                         ; 21 (21)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|texts:texts_u0|font_rom:font_unit                                                 ; work         ;
-;    |timer2:timer2_u0|                              ; 15 (15)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|timer2:timer2_u0                                                                  ; work         ;
-;    |timer:timer_u0|                                ; 8 (8)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|timer:timer_u0                                                                    ; work         ;
-;    |vga_sync:vga_sync_u0|                          ; 46 (46)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|vga_sync:vga_sync_u0                                                              ; work         ;
-+----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                    ;
++---------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                     ; Library Name ;
++---------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
+; |the_snake_game                                   ; 10610 (1)         ; 1883 (0)     ; 0           ; 0            ; 0       ; 0         ; 75   ; 0            ; |the_snake_game                                                         ; work         ;
+;    |button_controller:button_controller_u0|       ; 5 (5)             ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|button_controller:button_controller_u0                  ; work         ;
+;    |difficulty:difficulty_u0|                     ; 11 (11)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|difficulty:difficulty_u0                                ; work         ;
+;    |finite_state_machine:finite_state_machine_u0| ; 114 (114)         ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|finite_state_machine:finite_state_machine_u0            ; work         ;
+;    |items:items_u0|                               ; 299 (299)         ; 37 (37)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|items:items_u0                                          ; work         ;
+;    |level:level_u0|                               ; 24 (24)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|level:level_u0                                          ; work         ;
+;    |lives:lives_u0|                               ; 10 (10)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|lives:lives_u0                                          ; work         ;
+;    |score:score_u0|                               ; 77 (15)           ; 23 (7)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|score:score_u0                                          ; work         ;
+;       |four_digit_counter:four_digit_counter_u0|  ; 62 (62)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0 ; work         ;
+;    |snake:snake_u0|                               ; 8630 (8630)       ; 1702 (1702)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|snake:snake_u0                                          ; work         ;
+;    |stages:stages_u0|                             ; 141 (141)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|stages:stages_u0                                        ; work         ;
+;    |texts:texts_u0|                               ; 1230 (1211)       ; 11 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|texts:texts_u0                                          ; work         ;
+;       |font_rom:font_unit|                        ; 19 (19)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|texts:texts_u0|font_rom:font_unit                       ; work         ;
+;    |timer2:timer2_u0|                             ; 15 (15)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|timer2:timer2_u0                                        ; work         ;
+;    |timer:timer_u0|                               ; 8 (8)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|timer:timer_u0                                          ; work         ;
+;    |vga_sync:vga_sync_u0|                         ; 45 (45)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |the_snake_game|vga_sync:vga_sync_u0                                    ; work         ;
++---------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -255,113 +246,113 @@ Encoding Type:  One-Hot
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                     ;
-+-------------------------------------------------------+------------------------------------------------+
-; Register name                                         ; Reason for Removal                             ;
-+-------------------------------------------------------+------------------------------------------------+
-; snake:snake_u0|body_e[0..2]                           ; Stuck at VCC due to stuck port data_in         ;
-; items:items_u0|item_x_new[0..3]                       ; Stuck at GND due to stuck port data_in         ;
-; items:items_u0|item_y_new[0..3,9]                     ; Stuck at GND due to stuck port data_in         ;
-; button_controller:button_controller_u0|buttons_reg[6] ; Stuck at GND due to stuck port data_in         ;
-; lives:lives_u0|lives_temp[2]                          ; Merged with lives:lives_u0|LIVES[2]            ;
-; lives:lives_u0|lives_temp[1]                          ; Merged with lives:lives_u0|LIVES[1]            ;
-; lives:lives_u0|lives_temp[0]                          ; Merged with lives:lives_u0|LIVES[0]            ;
-; level:level_u0|level_temp[2]                          ; Merged with level:level_u0|LEVEL[2]            ;
-; level:level_u0|level_temp[1]                          ; Merged with level:level_u0|LEVEL[1]            ;
-; level:level_u0|level_temp[0]                          ; Merged with level:level_u0|LEVEL[0]            ;
-; level:level_u0|stage_select_tmp[2]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[2] ;
-; level:level_u0|stage_select_tmp[1]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[1] ;
-; level:level_u0|stage_select_tmp[0]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[0] ;
-; score:score_u0|add                                    ; Merged with score:score_u0|digit_increase      ;
-; items:items_u0|counter_x[3]                           ; Merged with items:items_u0|item_x_new[7]       ;
-; items:items_u0|counter_x[2]                           ; Merged with items:items_u0|item_x_new[6]       ;
-; items:items_u0|counter_x[1]                           ; Merged with items:items_u0|item_x_new[5]       ;
-; items:items_u0|counter_x[0]                           ; Merged with items:items_u0|item_x_new[4]       ;
-; items:items_u0|counter_y[4]                           ; Merged with items:items_u0|item_y_new[8]       ;
-; items:items_u0|counter_y[3]                           ; Merged with items:items_u0|item_y_new[7]       ;
-; items:items_u0|counter_y[2]                           ; Merged with items:items_u0|item_y_new[6]       ;
-; items:items_u0|counter_y[1]                           ; Merged with items:items_u0|item_y_new[5]       ;
-; items:items_u0|counter_y[0]                           ; Merged with items:items_u0|item_y_new[4]       ;
-; items:items_u0|counter_x[4]                           ; Merged with items:items_u0|item_x_new[8]       ;
-; items:items_u0|counter_x[5]                           ; Merged with items:items_u0|item_x_new[9]       ;
-; items:items_u0|item_y_register[0..2]                  ; Stuck at GND due to stuck port data_in         ;
-; items:items_u0|item_x_register[0..2]                  ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|head_y_next[3]                         ; Merged with snake:snake_u0|head_y_next[1]      ;
-; snake:snake_u0|head_x_next[3]                         ; Merged with snake:snake_u0|head_x_next[1]      ;
-; snake:snake_u0|head_x_next[2]                         ; Merged with snake:snake_u0|head_x_next[0]      ;
-; snake:snake_u0|head_x_next[0..1]                      ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|head_y_next[0..2]                      ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|head_x_register[0..3]                  ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|head_y_register[0..3]                  ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[0][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[0][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[0][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[0][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[0][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[0][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[0][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[0][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[1][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[1][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[1][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[1][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[1][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[1][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[1][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[1][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[2][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[2][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[2][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[2][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[2][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[2][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[2][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[2][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[3][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[3][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[3][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[3][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[3][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[3][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[3][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[3][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[4][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[4][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[4][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[4][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[4][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[4][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[4][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[4][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[5][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[5][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[5][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[5][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[5][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[5][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[5][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[5][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[6][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[6][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[6][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[6][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[6][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[6][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[6][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[6][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[7][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[7][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[7][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[7][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[7][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[7][2]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[7][1]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_y[7][0]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[8][3]                           ; Stuck at GND due to stuck port data_in         ;
-; snake:snake_u0|body_x[8][2]                           ; Stuck at GND due to stuck port data_in         ;
-; Total Number of Removed Registers = 1090              ;                                                ;
-+-------------------------------------------------------+------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++-------------------------------------------------------+-------------------------------------------------------------------+
+; Register name                                         ; Reason for Removal                                                ;
++-------------------------------------------------------+-------------------------------------------------------------------+
+; snake:snake_u0|body_e[0..2]                           ; Stuck at VCC due to stuck port data_in                            ;
+; items:items_u0|item_x_new[0..3]                       ; Stuck at GND due to stuck port data_in                            ;
+; items:items_u0|item_y_new[0..3,9]                     ; Stuck at GND due to stuck port data_in                            ;
+; lives:lives_u0|lives_temp[2]                          ; Merged with lives:lives_u0|LIVES[2]                               ;
+; lives:lives_u0|lives_temp[1]                          ; Merged with lives:lives_u0|LIVES[1]                               ;
+; lives:lives_u0|lives_temp[0]                          ; Merged with lives:lives_u0|LIVES[0]                               ;
+; level:level_u0|level_temp[2]                          ; Merged with level:level_u0|LEVEL[2]                               ;
+; level:level_u0|level_temp[1]                          ; Merged with level:level_u0|LEVEL[1]                               ;
+; level:level_u0|level_temp[0]                          ; Merged with level:level_u0|LEVEL[0]                               ;
+; level:level_u0|stage_select_tmp[2]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[2]                    ;
+; level:level_u0|stage_select_tmp[1]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[1]                    ;
+; level:level_u0|stage_select_tmp[0]                    ; Merged with level:level_u0|STAGE_SELECT_OUT[0]                    ;
+; score:score_u0|add                                    ; Merged with score:score_u0|digit_increase                         ;
+; items:items_u0|counter_x[3]                           ; Merged with items:items_u0|item_x_new[7]                          ;
+; items:items_u0|counter_x[2]                           ; Merged with items:items_u0|item_x_new[6]                          ;
+; items:items_u0|counter_x[1]                           ; Merged with items:items_u0|item_x_new[5]                          ;
+; items:items_u0|counter_x[0]                           ; Merged with items:items_u0|item_x_new[4]                          ;
+; items:items_u0|counter_y[4]                           ; Merged with items:items_u0|item_y_new[8]                          ;
+; items:items_u0|counter_y[3]                           ; Merged with items:items_u0|item_y_new[7]                          ;
+; items:items_u0|counter_y[2]                           ; Merged with items:items_u0|item_y_new[6]                          ;
+; items:items_u0|counter_y[1]                           ; Merged with items:items_u0|item_y_new[5]                          ;
+; items:items_u0|counter_y[0]                           ; Merged with items:items_u0|item_y_new[4]                          ;
+; items:items_u0|counter_x[4]                           ; Merged with items:items_u0|item_x_new[8]                          ;
+; items:items_u0|counter_x[5]                           ; Merged with items:items_u0|item_x_new[9]                          ;
+; button_controller:button_controller_u0|buttons_reg[4] ; Merged with button_controller:button_controller_u0|buttons_reg[5] ;
+; items:items_u0|item_y_register[0..2]                  ; Stuck at GND due to stuck port data_in                            ;
+; items:items_u0|item_x_register[0..2]                  ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|head_y_next[3]                         ; Merged with snake:snake_u0|head_y_next[1]                         ;
+; snake:snake_u0|head_x_next[3]                         ; Merged with snake:snake_u0|head_x_next[1]                         ;
+; snake:snake_u0|head_x_next[2]                         ; Merged with snake:snake_u0|head_x_next[0]                         ;
+; snake:snake_u0|head_x_next[0..1]                      ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|head_y_next[0..2]                      ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|head_x_register[0..3]                  ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|head_y_register[0..3]                  ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[0][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[0][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[0][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[0][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[0][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[0][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[0][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[0][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[1][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[1][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[1][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[1][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[1][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[1][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[1][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[1][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[2][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[2][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[2][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[2][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[2][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[2][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[2][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[2][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[3][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[3][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[3][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[3][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[3][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[3][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[3][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[3][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[4][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[4][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[4][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[4][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[4][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[4][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[4][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[4][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[5][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[5][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[5][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[5][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[5][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[5][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[5][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[5][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[6][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[6][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[6][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[6][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[6][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[6][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[6][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[6][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[7][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[7][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[7][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[7][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[7][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[7][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[7][1]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_y[7][0]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[8][3]                           ; Stuck at GND due to stuck port data_in                            ;
+; snake:snake_u0|body_x[8][2]                           ; Stuck at GND due to stuck port data_in                            ;
+; Total Number of Removed Registers = 1089              ;                                                                   ;
++-------------------------------------------------------+-------------------------------------------------------------------+
 * Table truncated at 100 items. To change the number of removed registers reported, set the "Number of Removed Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
 
 
@@ -642,124 +633,65 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ;                               ;                           ; snake:snake_u0|body_y[8][3], snake:snake_u0|body_y[8][1],             ;
 ;                               ;                           ; snake:snake_u0|body_y[9][3], snake:snake_u0|body_y[9][1],             ;
 ;                               ;                           ; snake:snake_u0|body_y[10][3], snake:snake_u0|body_y[10][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[11][3], snake:snake_u0|body_y[11][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[12][3], snake:snake_u0|body_y[12][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[13][3], snake:snake_u0|body_y[13][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[14][3], snake:snake_u0|body_y[14][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[15][3], snake:snake_u0|body_y[15][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[16][3], snake:snake_u0|body_y[16][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[17][3], snake:snake_u0|body_y[17][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[18][3], snake:snake_u0|body_y[18][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[19][3], snake:snake_u0|body_y[19][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[20][3], snake:snake_u0|body_y[20][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[21][3], snake:snake_u0|body_y[21][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[22][3], snake:snake_u0|body_y[22][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[23][3], snake:snake_u0|body_y[23][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[24][3], snake:snake_u0|body_y[24][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[25][3], snake:snake_u0|body_y[25][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[26][3], snake:snake_u0|body_y[26][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[27][3], snake:snake_u0|body_y[27][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[28][3], snake:snake_u0|body_y[28][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[29][3], snake:snake_u0|body_y[29][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[30][3], snake:snake_u0|body_y[30][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[31][3], snake:snake_u0|body_y[31][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[32][3], snake:snake_u0|body_y[32][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[33][3], snake:snake_u0|body_y[33][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[34][3], snake:snake_u0|body_y[34][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[35][3], snake:snake_u0|body_y[35][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[36][3], snake:snake_u0|body_y[36][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[37][3], snake:snake_u0|body_y[37][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[38][3], snake:snake_u0|body_y[38][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[39][3], snake:snake_u0|body_y[39][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[40][3], snake:snake_u0|body_y[40][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[41][3], snake:snake_u0|body_y[41][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[42][3], snake:snake_u0|body_y[42][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[43][3], snake:snake_u0|body_y[43][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[44][3], snake:snake_u0|body_y[44][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[45][3], snake:snake_u0|body_y[45][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[46][3], snake:snake_u0|body_y[46][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[47][3], snake:snake_u0|body_y[47][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[48][3], snake:snake_u0|body_y[48][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[49][3], snake:snake_u0|body_y[49][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[50][3], snake:snake_u0|body_y[50][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[51][3], snake:snake_u0|body_y[51][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[52][3], snake:snake_u0|body_y[52][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[53][3], snake:snake_u0|body_y[53][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[54][3], snake:snake_u0|body_y[54][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[55][3], snake:snake_u0|body_y[55][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[56][3], snake:snake_u0|body_y[56][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[57][3], snake:snake_u0|body_y[57][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[58][3], snake:snake_u0|body_y[58][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[59][3], snake:snake_u0|body_y[59][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[60][3], snake:snake_u0|body_y[60][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[61][3], snake:snake_u0|body_y[61][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[62][3], snake:snake_u0|body_y[62][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[63][3], snake:snake_u0|body_y[63][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[64][3], snake:snake_u0|body_y[64][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[65][3], snake:snake_u0|body_y[65][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[66][3], snake:snake_u0|body_y[66][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[67][3], snake:snake_u0|body_y[67][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[68][3], snake:snake_u0|body_y[68][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[69][3], snake:snake_u0|body_y[69][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[70][3], snake:snake_u0|body_y[70][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[71][3], snake:snake_u0|body_y[71][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[72][3], snake:snake_u0|body_y[72][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[73][3], snake:snake_u0|body_y[73][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[74][3], snake:snake_u0|body_y[74][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[75][3], snake:snake_u0|body_y[75][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[76][3], snake:snake_u0|body_y[76][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[77][3], snake:snake_u0|body_y[77][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[78][3], snake:snake_u0|body_y[78][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[79][3], snake:snake_u0|body_y[79][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[80][3], snake:snake_u0|body_y[80][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[81][3], snake:snake_u0|body_y[81][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[82][3], snake:snake_u0|body_y[82][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[83][3], snake:snake_u0|body_y[83][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[84][3], snake:snake_u0|body_y[84][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[85][3], snake:snake_u0|body_y[85][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[86][3], snake:snake_u0|body_y[86][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[87][3], snake:snake_u0|body_y[87][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[88][3], snake:snake_u0|body_y[88][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[89][3], snake:snake_u0|body_y[89][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[90][3], snake:snake_u0|body_y[90][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[91][3], snake:snake_u0|body_y[91][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[92][3], snake:snake_u0|body_y[92][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[93][3], snake:snake_u0|body_y[93][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[94][3], snake:snake_u0|body_y[94][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[95][3], snake:snake_u0|body_y[95][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[96][3], snake:snake_u0|body_y[96][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[97][3], snake:snake_u0|body_y[97][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[98][3], snake:snake_u0|body_y[98][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[99][3], snake:snake_u0|body_y[99][1],           ;
-;                               ;                           ; snake:snake_u0|body_y[100][3], snake:snake_u0|body_y[100][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[101][3], snake:snake_u0|body_y[101][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[102][3], snake:snake_u0|body_y[102][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[103][3], snake:snake_u0|body_y[103][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[104][3], snake:snake_u0|body_y[104][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[105][3], snake:snake_u0|body_y[105][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[106][3], snake:snake_u0|body_y[106][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[107][3], snake:snake_u0|body_y[107][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[108][3], snake:snake_u0|body_y[108][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[109][3], snake:snake_u0|body_y[109][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[110][3], snake:snake_u0|body_y[110][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[111][3], snake:snake_u0|body_y[111][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[112][3], snake:snake_u0|body_y[112][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[113][3], snake:snake_u0|body_y[113][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[114][3], snake:snake_u0|body_y[114][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[115][3], snake:snake_u0|body_y[115][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[116][3], snake:snake_u0|body_y[116][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[117][3], snake:snake_u0|body_y[117][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[118][3], snake:snake_u0|body_y[118][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[119][3], snake:snake_u0|body_y[119][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[120][3], snake:snake_u0|body_y[120][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[121][3], snake:snake_u0|body_y[121][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[122][3], snake:snake_u0|body_y[122][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[123][3], snake:snake_u0|body_y[123][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[124][3], snake:snake_u0|body_y[124][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[125][3], snake:snake_u0|body_y[125][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[126][3], snake:snake_u0|body_y[126][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[127][3], snake:snake_u0|body_y[127][1],         ;
-;                               ;                           ; snake:snake_u0|body_y[128][3], snake:snake_u0|body_y[128][1]          ;
+;                               ;                           ; snake:snake_u0|body_y[11][1], snake:snake_u0|body_y[12][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[13][1], snake:snake_u0|body_y[14][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[15][1], snake:snake_u0|body_y[16][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[17][1], snake:snake_u0|body_y[18][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[19][1], snake:snake_u0|body_y[20][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[21][1], snake:snake_u0|body_y[22][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[23][1], snake:snake_u0|body_y[24][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[25][1], snake:snake_u0|body_y[26][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[27][1], snake:snake_u0|body_y[28][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[29][1], snake:snake_u0|body_y[30][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[31][1], snake:snake_u0|body_y[32][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[33][1], snake:snake_u0|body_y[34][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[35][1], snake:snake_u0|body_y[36][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[37][1], snake:snake_u0|body_y[38][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[39][1], snake:snake_u0|body_y[40][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[41][1], snake:snake_u0|body_y[42][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[43][1], snake:snake_u0|body_y[44][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[45][1], snake:snake_u0|body_y[46][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[47][1], snake:snake_u0|body_y[48][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[49][1], snake:snake_u0|body_y[50][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[51][1], snake:snake_u0|body_y[52][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[53][1], snake:snake_u0|body_y[54][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[55][1], snake:snake_u0|body_y[56][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[57][1], snake:snake_u0|body_y[58][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[59][1], snake:snake_u0|body_y[60][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[61][1], snake:snake_u0|body_y[62][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[63][1], snake:snake_u0|body_y[64][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[65][1], snake:snake_u0|body_y[66][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[67][1], snake:snake_u0|body_y[68][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[69][1], snake:snake_u0|body_y[70][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[71][1], snake:snake_u0|body_y[72][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[73][1], snake:snake_u0|body_y[74][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[75][1], snake:snake_u0|body_y[76][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[77][1], snake:snake_u0|body_y[78][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[79][1], snake:snake_u0|body_y[80][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[81][1], snake:snake_u0|body_y[82][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[83][1], snake:snake_u0|body_y[84][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[85][1], snake:snake_u0|body_y[86][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[87][1], snake:snake_u0|body_y[88][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[89][1], snake:snake_u0|body_y[90][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[91][1], snake:snake_u0|body_y[92][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[93][1], snake:snake_u0|body_y[94][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[95][1], snake:snake_u0|body_y[96][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[97][1], snake:snake_u0|body_y[98][1],           ;
+;                               ;                           ; snake:snake_u0|body_y[99][1], snake:snake_u0|body_y[100][1],          ;
+;                               ;                           ; snake:snake_u0|body_y[101][1], snake:snake_u0|body_y[102][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[103][1], snake:snake_u0|body_y[104][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[105][1], snake:snake_u0|body_y[106][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[107][1], snake:snake_u0|body_y[108][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[109][1], snake:snake_u0|body_y[110][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[111][1], snake:snake_u0|body_y[112][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[113][1], snake:snake_u0|body_y[114][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[115][1], snake:snake_u0|body_y[116][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[117][1], snake:snake_u0|body_y[118][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[119][1], snake:snake_u0|body_y[120][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[121][1], snake:snake_u0|body_y[122][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[123][1], snake:snake_u0|body_y[124][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[125][1], snake:snake_u0|body_y[126][1],         ;
+;                               ;                           ; snake:snake_u0|body_y[127][1], snake:snake_u0|body_y[128][1]          ;
 ; snake:snake_u0|head_y_next[0] ; Stuck at GND              ; snake:snake_u0|head_y_register[0], snake:snake_u0|body_y[0][0],       ;
 ;                               ; due to stuck port data_in ; snake:snake_u0|body_y[1][0], snake:snake_u0|body_y[2][0],             ;
 ;                               ;                           ; snake:snake_u0|body_y[3][0], snake:snake_u0|body_y[4][0],             ;
@@ -890,6 +822,65 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ;                               ;                           ; snake:snake_u0|body_y[123][2], snake:snake_u0|body_y[124][2],         ;
 ;                               ;                           ; snake:snake_u0|body_y[125][2], snake:snake_u0|body_y[126][2],         ;
 ;                               ;                           ; snake:snake_u0|body_y[127][2], snake:snake_u0|body_y[128][2]          ;
+; snake:snake_u0|body_y[11][3]  ; Stuck at GND              ; snake:snake_u0|body_y[12][3], snake:snake_u0|body_y[13][3],           ;
+;                               ; due to stuck port data_in ; snake:snake_u0|body_y[14][3], snake:snake_u0|body_y[15][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[16][3], snake:snake_u0|body_y[17][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[18][3], snake:snake_u0|body_y[19][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[20][3], snake:snake_u0|body_y[21][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[22][3], snake:snake_u0|body_y[23][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[24][3], snake:snake_u0|body_y[25][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[26][3], snake:snake_u0|body_y[27][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[28][3], snake:snake_u0|body_y[29][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[30][3], snake:snake_u0|body_y[31][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[32][3], snake:snake_u0|body_y[33][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[34][3], snake:snake_u0|body_y[35][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[36][3], snake:snake_u0|body_y[37][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[38][3], snake:snake_u0|body_y[39][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[40][3], snake:snake_u0|body_y[41][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[42][3], snake:snake_u0|body_y[43][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[44][3], snake:snake_u0|body_y[45][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[46][3], snake:snake_u0|body_y[47][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[48][3], snake:snake_u0|body_y[49][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[50][3], snake:snake_u0|body_y[51][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[52][3], snake:snake_u0|body_y[53][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[54][3], snake:snake_u0|body_y[55][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[56][3], snake:snake_u0|body_y[57][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[58][3], snake:snake_u0|body_y[59][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[60][3], snake:snake_u0|body_y[61][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[62][3], snake:snake_u0|body_y[63][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[64][3], snake:snake_u0|body_y[65][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[66][3], snake:snake_u0|body_y[67][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[68][3], snake:snake_u0|body_y[69][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[70][3], snake:snake_u0|body_y[71][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[72][3], snake:snake_u0|body_y[73][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[74][3], snake:snake_u0|body_y[75][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[76][3], snake:snake_u0|body_y[77][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[78][3], snake:snake_u0|body_y[79][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[80][3], snake:snake_u0|body_y[81][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[82][3], snake:snake_u0|body_y[83][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[84][3], snake:snake_u0|body_y[85][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[86][3], snake:snake_u0|body_y[87][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[88][3], snake:snake_u0|body_y[89][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[90][3], snake:snake_u0|body_y[91][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[92][3], snake:snake_u0|body_y[93][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[94][3], snake:snake_u0|body_y[95][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[96][3], snake:snake_u0|body_y[97][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[98][3], snake:snake_u0|body_y[99][3],           ;
+;                               ;                           ; snake:snake_u0|body_y[100][3], snake:snake_u0|body_y[101][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[102][3], snake:snake_u0|body_y[103][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[104][3], snake:snake_u0|body_y[105][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[106][3], snake:snake_u0|body_y[107][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[108][3], snake:snake_u0|body_y[109][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[110][3], snake:snake_u0|body_y[111][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[112][3], snake:snake_u0|body_y[113][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[114][3], snake:snake_u0|body_y[115][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[116][3], snake:snake_u0|body_y[117][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[118][3], snake:snake_u0|body_y[119][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[120][3], snake:snake_u0|body_y[121][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[122][3], snake:snake_u0|body_y[123][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[124][3], snake:snake_u0|body_y[125][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[126][3], snake:snake_u0|body_y[127][3],         ;
+;                               ;                           ; snake:snake_u0|body_y[128][3]                                         ;
 ; snake:snake_u0|body_e[0]      ; Stuck at VCC              ; snake:snake_u0|body_e[1], snake:snake_u0|body_e[2]                    ;
 ;                               ; due to stuck port data_in ;                                                                       ;
 ; items:items_u0|item_x_new[2]  ; Stuck at GND              ; items:items_u0|item_x_register[2]                                     ;
@@ -912,118 +903,80 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1996  ;
-; Number of registers using Synchronous Clear  ; 22    ;
-; Number of registers using Synchronous Load   ; 15    ;
-; Number of registers using Asynchronous Clear ; 136   ;
+; Total registers                              ; 1883  ;
+; Number of registers using Synchronous Clear  ; 31    ;
+; Number of registers using Synchronous Load   ; 20    ;
+; Number of registers using Asynchronous Clear ; 166   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1660  ;
+; Number of registers using Clock Enable       ; 1673  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; level:level_u0|STAGE_SELECT_OUT[0]     ; 9       ;
-; items:items_u0|item_type_register[0]   ; 32      ;
-; level:level_u0|LEVEL[0]                ; 7       ;
-; items:items_u0|item_type_new[0]        ; 1       ;
-; timer2:timer2_u0|timer2_register[9]    ; 3       ;
-; items:items_u0|counter_z[0]            ; 2       ;
-; Total number of inverted registers = 6 ;         ;
-+----------------------------------------+---------+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; timer:timer_u0|timer_register[0]        ; 2       ;
+; timer:timer_u0|timer_register[1]        ; 2       ;
+; timer:timer_u0|timer_register[2]        ; 2       ;
+; timer:timer_u0|timer_register[3]        ; 2       ;
+; timer:timer_u0|timer_register[4]        ; 2       ;
+; timer:timer_u0|timer_register[5]        ; 2       ;
+; timer:timer_u0|timer_register[6]        ; 2       ;
+; level:level_u0|STAGE_SELECT_OUT[0]      ; 8       ;
+; items:items_u0|item_type_register[0]    ; 32      ;
+; level:level_u0|LEVEL[0]                 ; 7       ;
+; items:items_u0|item_type_new[0]         ; 1       ;
+; timer2:timer2_u0|timer2_register[9]     ; 3       ;
+; items:items_u0|counter_z[0]             ; 2       ;
+; Total number of inverted registers = 13 ;         ;
++-----------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |the_snake_game|timer:timer_u0|timer_register[0]                                                                  ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |the_snake_game|timer2:timer2_u0|timer2_register[2]                                                               ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst|counter_out[0]  ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst|counter_out[7]  ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|counter_out[15] ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |the_snake_game|button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|counter_out[1]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |the_snake_game|items:items_u0|item_type_new[1]                                                                   ;
-; 4:1                ; 2582 bits ; 5164 LEs      ; 5164 LEs             ; 0 LEs                  ; Yes        ; |the_snake_game|snake:snake_u0|body_x[3][9]                                                                       ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|button_controller:button_controller_u0|buttons_reg[2]                                             ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|button_controller:button_controller_u0|buttons_reg[0]                                             ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|lives:lives_u0|counter[1]                                                                         ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |the_snake_game|items:items_u0|item_y_register[3]                                                                 ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |the_snake_game|items:items_u0|item_y_register[4]                                                                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3]                       ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |the_snake_game|level:level_u0|counter_next_level[0]                                                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3]                       ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |the_snake_game|level:level_u0|LEVEL[2]                                                                           ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |the_snake_game|lives:lives_u0|LIVES[0]                                                                           ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|snake:snake_u0|direction_register[1]                                                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2]                       ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3]                       ;
-; 8:1                ; 6 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_x_next[9]                                                                     ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_x_next[0]                                                                     ;
-; 8:1                ; 6 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_y_next[4]                                                                     ;
-; 9:1                ; 3 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_y_next[0]                                                                     ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |the_snake_game|texts:texts_u0|font_rom:font_unit|address_register[2]                                             ;
-; 35:1               ; 3 bits    ; 69 LEs        ; 45 LEs               ; 24 LEs                 ; Yes        ; |the_snake_game|texts:texts_u0|font_rom:font_unit|address_register[4]                                             ;
-; 1:1                ; 6 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Add523                                                                             ;
-; 1:1                ; 6 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Add520                                                                             ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Mux780                                                                             ;
-; 14:1               ; 5 bits    ; 45 LEs        ; 25 LEs               ; 20 LEs                 ; No         ; |the_snake_game|finite_state_machine:finite_state_machine_u0|Selector1                                            ;
-; 18:1               ; 3 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |the_snake_game|texts:texts_u0|bit_address[2]                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |the_snake_game|timer2:timer2_u0|timer2_register[1]                                         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |the_snake_game|items:items_u0|item_type_new[2]                                             ;
+; 4:1                ; 2582 bits ; 5164 LEs      ; 5164 LEs             ; 0 LEs                  ; Yes        ; |the_snake_game|snake:snake_u0|body_y[11][3]                                                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|lives:lives_u0|counter[0]                                                   ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |the_snake_game|items:items_u0|item_y_register[9]                                           ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |the_snake_game|items:items_u0|item_type_register[2]                                        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |the_snake_game|level:level_u0|counter_next_level[3]                                        ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |the_snake_game|difficulty:difficulty_u0|counter[1]                                         ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |the_snake_game|level:level_u0|LEVEL[1]                                                     ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |the_snake_game|lives:lives_u0|LIVES[1]                                                     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |the_snake_game|snake:snake_u0|direction_register[0]                                        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |the_snake_game|score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_x_next[7]                                               ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_x_next[1]                                               ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_y_next[5]                                               ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |the_snake_game|snake:snake_u0|head_y_next[1]                                               ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |the_snake_game|texts:texts_u0|font_rom:font_unit|address_register[0]                       ;
+; 35:1               ; 3 bits    ; 69 LEs        ; 45 LEs               ; 24 LEs                 ; Yes        ; |the_snake_game|texts:texts_u0|font_rom:font_unit|address_register[5]                       ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |the_snake_game|timer:timer_u0|timer_register[3]                                            ;
+; 1:1                ; 6 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Add523                                                       ;
+; 1:1                ; 6 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Add520                                                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |the_snake_game|snake:snake_u0|Mux780                                                       ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 20 LEs               ; 12 LEs                 ; No         ; |the_snake_game|finite_state_machine:finite_state_machine_u0|state_register~7               ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |the_snake_game|texts:texts_u0|bit_address[2]                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                                  ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; counter_size   ; 19    ; Signed Integer                                                                                        ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                                  ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; counter_size   ; 19    ; Signed Integer                                                                                        ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                                  ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; counter_size   ; 19    ; Signed Integer                                                                                        ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                                  ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-; counter_size   ; 19    ; Signed Integer                                                                                        ;
-+----------------+-------+-------------------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "button_controller:button_controller_u0" ;
-+-------+-------+----------+-----------------------------------------+
-; Port  ; Type  ; Severity ; Details                                 ;
-+-------+-------+----------+-----------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                            ;
-+-------+-------+----------+-----------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "finite_state_machine:finite_state_machine_u0"                                                   ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                             ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; status_indicator ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -1032,7 +985,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
-    Info: Processing started: Sat Jan 31 16:37:25 2026
+    Info: Processing started: Sat Jan 31 17:14:41 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off the_snake_game -c the_snake_game
 Info: Found 2 design units, including 1 entities, in source file vhdl_files/debouncer.vhd
     Info: Found design unit 1: debouncer-behavioral
@@ -1088,8 +1041,8 @@ Info: Found 2 design units, including 1 entities, in source file vhdl_files/util
     Info: Found design unit 1: difficulty-arch
     Info: Found entity 1: difficulty
 Info: Elaborating entity "the_snake_game" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at the_snake_game.vhd(35): object "status_indicator" assigned a value but never read
 Info: Elaborating entity "button_controller" for hierarchy "button_controller:button_controller_u0"
-Info: Elaborating entity "debouncer" for hierarchy "button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst"
 Info: Elaborating entity "vga_sync" for hierarchy "vga_sync:vga_sync_u0"
 Info: Elaborating entity "finite_state_machine" for hierarchy "finite_state_machine:finite_state_machine_u0"
 Info: Elaborating entity "stages" for hierarchy "stages:stages_u0"
@@ -1116,14 +1069,14 @@ Info: Elaborating entity "timer" for hierarchy "timer:timer_u0"
 Info: Elaborating entity "timer2" for hierarchy "timer2:timer2_u0"
 Info: Registers with preset signals will power-up high
 Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Info: Implemented 11090 device resources after synthesis - the final resource count might be different
-    Info: Implemented 5 input pins
-    Info: Implemented 53 output pins
-    Info: Implemented 11032 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 291 megabytes
-    Info: Processing ended: Sat Jan 31 16:38:21 2026
-    Info: Elapsed time: 00:00:56
-    Info: Total CPU time (on all processors): 00:00:55
+Info: Implemented 10845 device resources after synthesis - the final resource count might be different
+    Info: Implemented 15 input pins
+    Info: Implemented 60 output pins
+    Info: Implemented 10770 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 290 megabytes
+    Info: Processing ended: Sat Jan 31 17:15:21 2026
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:00:38
 
 

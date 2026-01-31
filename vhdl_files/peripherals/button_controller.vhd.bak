@@ -1,0 +1,163 @@
+-- button_controller.vhd
+-- Controls the game using KEY buttons for directions and SW switches for control
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY button_controller IS
+    PORT (
+        clk     : IN  STD_LOGIC;
+        SW      : IN  STD_LOGIC_VECTOR(9 DOWNTO 0);  -- SW[9..0] for reset, pause, etc.
+        KEY     : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- KEY[3..0] for directions (active low)
+        buttons : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)   -- Same format: [6]=reset, [5]=pause, [4..0]=directions
+    );
+END button_controller;
+
+ARCHITECTURE behavioral OF button_controller IS
+    
+    -- Internal signals
+    SIGNAL key_sync         : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL key_debounced    : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL key_prev         : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL buttons_reg      : STD_LOGIC_VECTOR(6 DOWNTO 0);
+    
+    -- Debouncer signals for KEY buttons
+    SIGNAL debounce_counter : INTEGER RANGE 0 TO 50000 := 0;
+    CONSTANT DEBOUNCE_MAX   : INTEGER := 50000;  -- 1ms at 50MHz
+    
+    -- Switch signals
+    SIGNAL sw_sync          : STD_LOGIC_VECTOR(9 DOWNTO 0);
+    SIGNAL sw_debounced     : STD_LOGIC_VECTOR(9 DOWNTO 0);
+    SIGNAL sw_prev          : STD_LOGIC_VECTOR(9 DOWNTO 0);
+    
+    -- Special signals for menu control
+    SIGNAL sw1_edge_detected  : STD_LOGIC := '0';
+    SIGNAL sw1_press_latched  : STD_LOGIC := '0';
+    SIGNAL enter_pressed      : STD_LOGIC := '0';
+    
+    -- Direction memory for continuous movement
+    SIGNAL last_direction    : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
+    
+BEGIN
+
+    -- Input synchronization (2-stage synchronizer for KEY and SW)
+    sync_proc: PROCESS(clk)
+    BEGIN
+        IF rising_edge(clk) THEN
+            key_sync <= KEY;
+            sw_sync <= SW;
+        END IF;
+    END PROCESS sync_proc;
+    
+    -- Debouncer process for KEY buttons
+    debounce_proc: PROCESS(clk)
+        VARIABLE debounce_timer : INTEGER RANGE 0 TO DEBOUNCE_MAX;
+    BEGIN
+        IF rising_edge(clk) THEN
+            -- Check for stable KEY input
+            IF key_sync = key_debounced THEN
+                debounce_timer := 0;
+            ELSE
+                debounce_timer := debounce_timer + 1;
+                IF debounce_timer >= DEBOUNCE_MAX THEN
+                    key_debounced <= key_sync;
+                    debounce_timer := 0;
+                END IF;
+            END IF;
+            
+            -- Simple debounce for SW (less critical)
+            sw_debounced <= sw_sync;
+            sw_prev <= sw_debounced;
+        END IF;
+    END PROCESS debounce_proc;
+    
+    -- Edge detection for SW[1] (ENTER/OK button)
+    sw_edge_proc: PROCESS(clk)
+    BEGIN
+        IF rising_edge(clk) THEN
+            -- Detect rising edge on SW[1] (0->1 transition)
+            IF sw_prev(1) = '0' AND sw_debounced(1) = '1' THEN
+                sw1_edge_detected <= '1';
+            ELSE
+                sw1_edge_detected <= '0';
+            END IF;
+        END IF;
+    END PROCESS sw_edge_proc;
+    
+    -- Main button processing
+    main_proc: PROCESS(clk)
+        VARIABLE key_edge : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    BEGIN
+        IF rising_edge(clk) THEN
+            -- Default outputs (active for one cycle only)
+            buttons_reg <= (OTHERS => '0');
+            
+            -- Detect falling edges for KEY buttons (1->0 transition)
+            key_edge := key_prev AND (NOT key_debounced);
+            
+            -- ==============================================
+            -- KEY BUTTONS - Direction control
+            -- ==============================================
+            
+            -- KEY[0] = UP (Menu: Left, Game: Up)
+            IF key_edge(0) = '1' THEN
+                buttons_reg(2) <= '1';  -- Up/Left
+                last_direction <= "0010"; -- Store for continuous movement
+            END IF;
+            
+            -- KEY[1] = DOWN (Menu: Right, Game: Down)  
+            IF key_edge(1) = '1' THEN
+                buttons_reg(3) <= '1';  -- Down/Right
+                last_direction <= "0011";
+            END IF;
+            
+            -- KEY[2] = LEFT (Game only)
+            IF key_edge(2) = '1' THEN
+                buttons_reg(1) <= '1';  -- Left
+                last_direction <= "0001";
+            END IF;
+            
+            -- KEY[3] = RIGHT (Game only)
+            IF key_edge(3) = '1' THEN
+                buttons_reg(0) <= '1';  -- Right
+                last_direction <= "0000";
+            END IF;
+            
+            key_prev <= key_debounced;
+            
+            -- ==============================================
+            -- SWITCH CONTROLS
+            -- ==============================================
+            
+            -- SW[0] = RESET (active high) - Always works
+            IF sw_debounced(0) = '1' THEN
+                buttons_reg(6) <= '1';  -- Reset
+            END IF;
+            
+            -- SW[1] = ENTER/OK/SELECT (rising edge detection)
+            -- This is the "Enter" key for menus and "OK" for selections
+            IF sw1_edge_detected = '1' THEN
+                buttons_reg(5) <= '1';  -- Enter/OK/Select
+                -- Also map to "space" for compatibility (button 4)
+                buttons_reg(4) <= '1';  -- Space (alternative for Enter)
+            END IF;
+            
+            -- SW[2] = PAUSE toggle (in-game only)
+            -- This will be handled by the finite state machine
+            
+            -- SW[3] = BACK/ESCAPE (optional)
+            IF sw_prev(3) = '0' AND sw_debounced(3) = '1' THEN
+                -- Map to escape function if needed
+                -- buttons_reg(?) <= '1';
+            END IF;
+            
+            -- Continuous movement for game (when KEY is held down)
+            -- This is handled by the game logic itself
+            
+        END IF;
+    END PROCESS main_proc;
+    
+    -- Output assignment
+    buttons <= buttons_reg;
+    
+END behavioral;
