@@ -1,0 +1,751 @@
+Classic Timing Analyzer report for the_snake_game
+Sat Jan 31 16:39:32 2026
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'CLOCK_50'
+  7. Clock Hold: 'CLOCK_50'
+  8. tsu
+  9. tco
+ 10. th
+ 11. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                                                                                                              ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-----------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                                                            ; To                                                                                             ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-----------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A                                      ; None          ; 4.204 ns                         ; KEY[2]                                                          ; button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0] ; --         ; CLOCK_50 ; 0            ;
+; Worst-case tco               ; N/A                                      ; None          ; 10.745 ns                        ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[2] ; LEDG[2]                                                                                        ; CLOCK_50   ; --       ; 0            ;
+; Worst-case th                ; N/A                                      ; None          ; -3.253 ns                        ; KEY[3]                                                          ; button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0] ; --         ; CLOCK_50 ; 0            ;
+; Clock Setup: 'CLOCK_50'      ; N/A                                      ; None          ; 53.01 MHz ( period = 18.864 ns ) ; snake:snake_u0|body_e[105]                                      ; finite_state_machine:finite_state_machine_u0|rgb_register[1]                                   ; CLOCK_50   ; CLOCK_50 ; 0            ;
+; Clock Hold: 'CLOCK_50'       ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; snake:snake_u0|body_e[63]                                       ; snake:snake_u0|body_e[64]                                                                      ; CLOCK_50   ; CLOCK_50 ; 99           ;
+; Total number of failed paths ;                                          ;               ;                                  ;                                                                 ;                                                                                                ;            ;          ; 99           ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-----------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EP2C20F484C7       ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; CLOCK_50        ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'CLOCK_50'                                                                                                                                                                                                                                                                                           ;
++-----------------------------------------+-----------------------------------------------------+----------------------------+--------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                       ; To                                                                       ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------+--------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 53.01 MHz ( period = 18.864 ns )                    ; snake:snake_u0|body_e[105] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.275 ns               ;
+; N/A                                     ; 53.04 MHz ( period = 18.855 ns )                    ; snake:snake_u0|body_e[19]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.266 ns               ;
+; N/A                                     ; 53.04 MHz ( period = 18.854 ns )                    ; snake:snake_u0|body_e[105] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.265 ns               ;
+; N/A                                     ; 53.06 MHz ( period = 18.846 ns )                    ; snake:snake_u0|body_e[8]   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.257 ns               ;
+; N/A                                     ; 53.06 MHz ( period = 18.845 ns )                    ; snake:snake_u0|body_e[19]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.256 ns               ;
+; N/A                                     ; 53.09 MHz ( period = 18.836 ns )                    ; snake:snake_u0|body_e[8]   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.247 ns               ;
+; N/A                                     ; 53.23 MHz ( period = 18.787 ns )                    ; snake:snake_u0|body_e[81]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.203 ns               ;
+; N/A                                     ; 53.26 MHz ( period = 18.777 ns )                    ; snake:snake_u0|body_e[81]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.193 ns               ;
+; N/A                                     ; 53.27 MHz ( period = 18.772 ns )                    ; snake:snake_u0|body_e[13]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.180 ns               ;
+; N/A                                     ; 53.30 MHz ( period = 18.762 ns )                    ; snake:snake_u0|body_e[13]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.170 ns               ;
+; N/A                                     ; 53.36 MHz ( period = 18.742 ns )                    ; snake:snake_u0|body_e[71]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.163 ns               ;
+; N/A                                     ; 53.38 MHz ( period = 18.732 ns )                    ; snake:snake_u0|body_e[71]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.153 ns               ;
+; N/A                                     ; 53.63 MHz ( period = 18.646 ns )                    ; snake:snake_u0|body_e[96]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.049 ns               ;
+; N/A                                     ; 53.66 MHz ( period = 18.636 ns )                    ; snake:snake_u0|body_e[96]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.039 ns               ;
+; N/A                                     ; 53.77 MHz ( period = 18.599 ns )                    ; snake:snake_u0|body_e[64]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.032 ns               ;
+; N/A                                     ; 53.80 MHz ( period = 18.589 ns )                    ; snake:snake_u0|body_e[64]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 11.022 ns               ;
+; N/A                                     ; 53.82 MHz ( period = 18.579 ns )                    ; snake:snake_u0|body_e[127] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.995 ns               ;
+; N/A                                     ; 53.83 MHz ( period = 18.576 ns )                    ; snake:snake_u0|body_e[68]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.991 ns               ;
+; N/A                                     ; 53.85 MHz ( period = 18.569 ns )                    ; snake:snake_u0|body_e[127] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.985 ns               ;
+; N/A                                     ; 53.86 MHz ( period = 18.566 ns )                    ; snake:snake_u0|body_e[68]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.981 ns               ;
+; N/A                                     ; 54.02 MHz ( period = 18.510 ns )                    ; snake:snake_u0|body_e[110] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.921 ns               ;
+; N/A                                     ; 54.05 MHz ( period = 18.500 ns )                    ; snake:snake_u0|body_e[110] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.911 ns               ;
+; N/A                                     ; 54.13 MHz ( period = 18.473 ns )                    ; snake:snake_u0|body_e[118] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.876 ns               ;
+; N/A                                     ; 54.15 MHz ( period = 18.466 ns )                    ; snake:snake_u0|body_e[106] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.881 ns               ;
+; N/A                                     ; 54.16 MHz ( period = 18.463 ns )                    ; snake:snake_u0|body_e[118] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.866 ns               ;
+; N/A                                     ; 54.18 MHz ( period = 18.456 ns )                    ; snake:snake_u0|body_e[106] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.871 ns               ;
+; N/A                                     ; 54.21 MHz ( period = 18.448 ns )                    ; snake:snake_u0|body_e[87]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.853 ns               ;
+; N/A                                     ; 54.21 MHz ( period = 18.446 ns )                    ; snake:snake_u0|body_e[43]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.857 ns               ;
+; N/A                                     ; 54.23 MHz ( period = 18.439 ns )                    ; snake:snake_u0|body_e[66]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.857 ns               ;
+; N/A                                     ; 54.24 MHz ( period = 18.438 ns )                    ; snake:snake_u0|body_e[87]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.843 ns               ;
+; N/A                                     ; 54.24 MHz ( period = 18.436 ns )                    ; snake:snake_u0|body_e[43]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.847 ns               ;
+; N/A                                     ; 54.26 MHz ( period = 18.429 ns )                    ; snake:snake_u0|body_e[66]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.847 ns               ;
+; N/A                                     ; 54.28 MHz ( period = 18.422 ns )                    ; snake:snake_u0|body_e[28]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.827 ns               ;
+; N/A                                     ; 54.31 MHz ( period = 18.412 ns )                    ; snake:snake_u0|body_e[28]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.817 ns               ;
+; N/A                                     ; 54.37 MHz ( period = 18.392 ns )                    ; snake:snake_u0|body_e[21]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.802 ns               ;
+; N/A                                     ; 54.39 MHz ( period = 18.387 ns )                    ; snake:snake_u0|body_e[35]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.803 ns               ;
+; N/A                                     ; 54.39 MHz ( period = 18.385 ns )                    ; snake:snake_u0|body_e[22]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.789 ns               ;
+; N/A                                     ; 54.40 MHz ( period = 18.382 ns )                    ; snake:snake_u0|body_e[21]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.792 ns               ;
+; N/A                                     ; 54.42 MHz ( period = 18.377 ns )                    ; snake:snake_u0|body_e[35]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.793 ns               ;
+; N/A                                     ; 54.42 MHz ( period = 18.375 ns )                    ; snake:snake_u0|body_e[22]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.779 ns               ;
+; N/A                                     ; 54.51 MHz ( period = 18.345 ns )                    ; snake:snake_u0|body_e[108] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.763 ns               ;
+; N/A                                     ; 54.54 MHz ( period = 18.335 ns )                    ; snake:snake_u0|body_e[108] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.753 ns               ;
+; N/A                                     ; 54.58 MHz ( period = 18.321 ns )                    ; snake:snake_u0|body_e[103] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.735 ns               ;
+; N/A                                     ; 54.61 MHz ( period = 18.311 ns )                    ; snake:snake_u0|body_e[103] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.725 ns               ;
+; N/A                                     ; 54.73 MHz ( period = 18.271 ns )                    ; snake:snake_u0|body_e[18]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.694 ns               ;
+; N/A                                     ; 54.75 MHz ( period = 18.265 ns )                    ; snake:snake_u0|body_e[31]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.684 ns               ;
+; N/A                                     ; 54.76 MHz ( period = 18.261 ns )                    ; snake:snake_u0|body_e[18]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.684 ns               ;
+; N/A                                     ; 54.76 MHz ( period = 18.260 ns )                    ; snake:snake_u0|body_e[97]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.672 ns               ;
+; N/A                                     ; 54.77 MHz ( period = 18.258 ns )                    ; snake:snake_u0|body_e[82]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.693 ns               ;
+; N/A                                     ; 54.78 MHz ( period = 18.256 ns )                    ; snake:snake_u0|body_e[82]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.691 ns               ;
+; N/A                                     ; 54.78 MHz ( period = 18.256 ns )                    ; snake:snake_u0|body_e[82]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.691 ns               ;
+; N/A                                     ; 54.78 MHz ( period = 18.255 ns )                    ; snake:snake_u0|body_e[31]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.674 ns               ;
+; N/A                                     ; 54.79 MHz ( period = 18.253 ns )                    ; snake:snake_u0|body_e[82]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.688 ns               ;
+; N/A                                     ; 54.79 MHz ( period = 18.250 ns )                    ; snake:snake_u0|body_e[97]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.662 ns               ;
+; N/A                                     ; 54.80 MHz ( period = 18.248 ns )                    ; snake:snake_u0|body_e[112] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.659 ns               ;
+; N/A                                     ; 54.82 MHz ( period = 18.241 ns )                    ; snake:snake_u0|body_e[4]   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.655 ns               ;
+; N/A                                     ; 54.83 MHz ( period = 18.238 ns )                    ; snake:snake_u0|body_e[112] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.649 ns               ;
+; N/A                                     ; 54.85 MHz ( period = 18.231 ns )                    ; snake:snake_u0|body_e[4]   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.645 ns               ;
+; N/A                                     ; 54.89 MHz ( period = 18.219 ns )                    ; snake:snake_u0|body_e[46]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.634 ns               ;
+; N/A                                     ; 54.92 MHz ( period = 18.209 ns )                    ; snake:snake_u0|body_e[46]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.624 ns               ;
+; N/A                                     ; 54.98 MHz ( period = 18.188 ns )                    ; snake:snake_u0|body_e[26]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.597 ns               ;
+; N/A                                     ; 54.98 MHz ( period = 18.187 ns )                    ; snake:snake_u0|body_e[100] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.595 ns               ;
+; N/A                                     ; 54.99 MHz ( period = 18.186 ns )                    ; snake:snake_u0|body_e[26]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.595 ns               ;
+; N/A                                     ; 54.99 MHz ( period = 18.186 ns )                    ; snake:snake_u0|body_e[26]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.595 ns               ;
+; N/A                                     ; 54.99 MHz ( period = 18.186 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.619 ns               ;
+; N/A                                     ; 55.00 MHz ( period = 18.183 ns )                    ; snake:snake_u0|body_e[26]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.592 ns               ;
+; N/A                                     ; 55.00 MHz ( period = 18.183 ns )                    ; snake:snake_u0|body_e[11]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.604 ns               ;
+; N/A                                     ; 55.01 MHz ( period = 18.177 ns )                    ; snake:snake_u0|body_e[100] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.585 ns               ;
+; N/A                                     ; 55.02 MHz ( period = 18.176 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.609 ns               ;
+; N/A                                     ; 55.03 MHz ( period = 18.173 ns )                    ; snake:snake_u0|body_e[11]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.594 ns               ;
+; N/A                                     ; 55.04 MHz ( period = 18.170 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.578 ns               ;
+; N/A                                     ; 55.06 MHz ( period = 18.163 ns )                    ; snake:snake_u0|body_e[85]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.581 ns               ;
+; N/A                                     ; 55.07 MHz ( period = 18.160 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.568 ns               ;
+; N/A                                     ; 55.08 MHz ( period = 18.156 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.571 ns               ;
+; N/A                                     ; 55.08 MHz ( period = 18.156 ns )                    ; snake:snake_u0|body_e[125] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.589 ns               ;
+; N/A                                     ; 55.08 MHz ( period = 18.154 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.569 ns               ;
+; N/A                                     ; 55.08 MHz ( period = 18.154 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.569 ns               ;
+; N/A                                     ; 55.09 MHz ( period = 18.153 ns )                    ; snake:snake_u0|body_e[85]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.571 ns               ;
+; N/A                                     ; 55.09 MHz ( period = 18.151 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.566 ns               ;
+; N/A                                     ; 55.11 MHz ( period = 18.146 ns )                    ; snake:snake_u0|body_e[125] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.579 ns               ;
+; N/A                                     ; 55.13 MHz ( period = 18.139 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.546 ns               ;
+; N/A                                     ; 55.15 MHz ( period = 18.131 ns )                    ; snake:snake_u0|body_e[9]   ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.554 ns               ;
+; N/A                                     ; 55.16 MHz ( period = 18.129 ns )                    ; snake:snake_u0|body_e[9]   ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.552 ns               ;
+; N/A                                     ; 55.16 MHz ( period = 18.129 ns )                    ; snake:snake_u0|body_e[9]   ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.552 ns               ;
+; N/A                                     ; 55.16 MHz ( period = 18.129 ns )                    ; snake:snake_u0|body_e[120] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.537 ns               ;
+; N/A                                     ; 55.16 MHz ( period = 18.129 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.536 ns               ;
+; N/A                                     ; 55.16 MHz ( period = 18.128 ns )                    ; snake:snake_u0|body_e[70]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.548 ns               ;
+; N/A                                     ; 55.17 MHz ( period = 18.126 ns )                    ; snake:snake_u0|body_e[9]   ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.549 ns               ;
+; N/A                                     ; 55.19 MHz ( period = 18.119 ns )                    ; snake:snake_u0|body_e[120] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.527 ns               ;
+; N/A                                     ; 55.19 MHz ( period = 18.118 ns )                    ; snake:snake_u0|body_e[70]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.538 ns               ;
+; N/A                                     ; 55.20 MHz ( period = 18.117 ns )                    ; snake:snake_u0|body_e[5]   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.529 ns               ;
+; N/A                                     ; 55.22 MHz ( period = 18.108 ns )                    ; snake:snake_u0|body_e[86]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.520 ns               ;
+; N/A                                     ; 55.23 MHz ( period = 18.107 ns )                    ; snake:snake_u0|body_e[5]   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.519 ns               ;
+; N/A                                     ; 55.23 MHz ( period = 18.106 ns )                    ; snake:snake_u0|body_e[86]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.518 ns               ;
+; N/A                                     ; 55.23 MHz ( period = 18.106 ns )                    ; snake:snake_u0|body_e[86]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.518 ns               ;
+; N/A                                     ; 55.23 MHz ( period = 18.105 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.531 ns               ;
+; N/A                                     ; 55.24 MHz ( period = 18.103 ns )                    ; snake:snake_u0|body_e[86]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.515 ns               ;
+; N/A                                     ; 55.24 MHz ( period = 18.102 ns )                    ; snake:snake_u0|body_e[47]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.522 ns               ;
+; N/A                                     ; 55.26 MHz ( period = 18.095 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.521 ns               ;
+; N/A                                     ; 55.27 MHz ( period = 18.092 ns )                    ; snake:snake_u0|body_e[47]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.512 ns               ;
+; N/A                                     ; 55.28 MHz ( period = 18.091 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.504 ns               ;
+; N/A                                     ; 55.29 MHz ( period = 18.086 ns )                    ; snake:snake_u0|body_e[57]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.506 ns               ;
+; N/A                                     ; 55.30 MHz ( period = 18.084 ns )                    ; snake:snake_u0|body_e[57]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.504 ns               ;
+; N/A                                     ; 55.30 MHz ( period = 18.084 ns )                    ; snake:snake_u0|body_e[57]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.504 ns               ;
+; N/A                                     ; 55.31 MHz ( period = 18.081 ns )                    ; snake:snake_u0|body_e[57]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.501 ns               ;
+; N/A                                     ; 55.31 MHz ( period = 18.081 ns )                    ; snake:snake_u0|body_e[53]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.494 ns               ;
+; N/A                                     ; 55.33 MHz ( period = 18.074 ns )                    ; snake:snake_u0|body_e[75]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.482 ns               ;
+; N/A                                     ; 55.34 MHz ( period = 18.070 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.497 ns               ;
+; N/A                                     ; 55.36 MHz ( period = 18.064 ns )                    ; snake:snake_u0|body_e[75]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.472 ns               ;
+; N/A                                     ; 55.37 MHz ( period = 18.060 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.469 ns               ;
+; N/A                                     ; 55.37 MHz ( period = 18.060 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.487 ns               ;
+; N/A                                     ; 55.38 MHz ( period = 18.058 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.467 ns               ;
+; N/A                                     ; 55.38 MHz ( period = 18.058 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.467 ns               ;
+; N/A                                     ; 55.39 MHz ( period = 18.055 ns )                    ; snake:snake_u0|body_e[99]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.464 ns               ;
+; N/A                                     ; 55.39 MHz ( period = 18.053 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.469 ns               ;
+; N/A                                     ; 55.40 MHz ( period = 18.051 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.467 ns               ;
+; N/A                                     ; 55.40 MHz ( period = 18.051 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.467 ns               ;
+; N/A                                     ; 55.40 MHz ( period = 18.050 ns )                    ; snake:snake_u0|body_e[10]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.465 ns               ;
+; N/A                                     ; 55.41 MHz ( period = 18.048 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.464 ns               ;
+; N/A                                     ; 55.42 MHz ( period = 18.043 ns )                    ; snake:snake_u0|body_e[32]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.462 ns               ;
+; N/A                                     ; 55.43 MHz ( period = 18.040 ns )                    ; snake:snake_u0|body_e[10]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.455 ns               ;
+; N/A                                     ; 55.45 MHz ( period = 18.033 ns )                    ; snake:snake_u0|body_e[32]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.452 ns               ;
+; N/A                                     ; 55.46 MHz ( period = 18.030 ns )                    ; snake:snake_u0|body_e[7]   ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.456 ns               ;
+; N/A                                     ; 55.47 MHz ( period = 18.028 ns )                    ; snake:snake_u0|body_e[7]   ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.454 ns               ;
+; N/A                                     ; 55.47 MHz ( period = 18.028 ns )                    ; snake:snake_u0|body_e[7]   ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.454 ns               ;
+; N/A                                     ; 55.48 MHz ( period = 18.025 ns )                    ; snake:snake_u0|body_e[7]   ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.451 ns               ;
+; N/A                                     ; 55.48 MHz ( period = 18.025 ns )                    ; snake:snake_u0|body_e[113] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.457 ns               ;
+; N/A                                     ; 55.51 MHz ( period = 18.015 ns )                    ; snake:snake_u0|body_e[113] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.447 ns               ;
+; N/A                                     ; 55.70 MHz ( period = 17.954 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.364 ns               ;
+; N/A                                     ; 55.70 MHz ( period = 17.952 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.362 ns               ;
+; N/A                                     ; 55.70 MHz ( period = 17.952 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.362 ns               ;
+; N/A                                     ; 55.71 MHz ( period = 17.949 ns )                    ; snake:snake_u0|body_e[111] ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.359 ns               ;
+; N/A                                     ; 55.78 MHz ( period = 17.929 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.357 ns               ;
+; N/A                                     ; 55.78 MHz ( period = 17.929 ns )                    ; snake:snake_u0|body_e[27]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.344 ns               ;
+; N/A                                     ; 55.78 MHz ( period = 17.927 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.355 ns               ;
+; N/A                                     ; 55.78 MHz ( period = 17.927 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.355 ns               ;
+; N/A                                     ; 55.78 MHz ( period = 17.926 ns )                    ; snake:snake_u0|body_e[91]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.327 ns               ;
+; N/A                                     ; 55.79 MHz ( period = 17.924 ns )                    ; snake:snake_u0|body_e[65]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.352 ns               ;
+; N/A                                     ; 55.79 MHz ( period = 17.923 ns )                    ; snake:snake_u0|body_e[83]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.365 ns               ;
+; N/A                                     ; 55.80 MHz ( period = 17.921 ns )                    ; snake:snake_u0|body_e[83]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.363 ns               ;
+; N/A                                     ; 55.80 MHz ( period = 17.921 ns )                    ; snake:snake_u0|body_e[83]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.363 ns               ;
+; N/A                                     ; 55.81 MHz ( period = 17.919 ns )                    ; snake:snake_u0|body_e[27]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.334 ns               ;
+; N/A                                     ; 55.81 MHz ( period = 17.918 ns )                    ; snake:snake_u0|body_e[83]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.360 ns               ;
+; N/A                                     ; 55.81 MHz ( period = 17.918 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.347 ns               ;
+; N/A                                     ; 55.81 MHz ( period = 17.918 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.332 ns               ;
+; N/A                                     ; 55.82 MHz ( period = 17.916 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.345 ns               ;
+; N/A                                     ; 55.82 MHz ( period = 17.916 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.345 ns               ;
+; N/A                                     ; 55.82 MHz ( period = 17.916 ns )                    ; snake:snake_u0|body_e[91]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.317 ns               ;
+; N/A                                     ; 55.83 MHz ( period = 17.913 ns )                    ; snake:snake_u0|body_e[40]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.342 ns               ;
+; N/A                                     ; 55.83 MHz ( period = 17.910 ns )                    ; snake:snake_u0|body_e[51]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.321 ns               ;
+; N/A                                     ; 55.84 MHz ( period = 17.908 ns )                    ; snake:snake_u0|body_e[51]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.319 ns               ;
+; N/A                                     ; 55.84 MHz ( period = 17.908 ns )                    ; snake:snake_u0|body_e[51]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.319 ns               ;
+; N/A                                     ; 55.84 MHz ( period = 17.908 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.319 ns               ;
+; N/A                                     ; 55.84 MHz ( period = 17.908 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.322 ns               ;
+; N/A                                     ; 55.85 MHz ( period = 17.906 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.317 ns               ;
+; N/A                                     ; 55.85 MHz ( period = 17.906 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.317 ns               ;
+; N/A                                     ; 55.85 MHz ( period = 17.905 ns )                    ; snake:snake_u0|body_e[51]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.316 ns               ;
+; N/A                                     ; 55.86 MHz ( period = 17.903 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.314 ns               ;
+; N/A                                     ; 55.88 MHz ( period = 17.897 ns )                    ; snake:snake_u0|body_e[49]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.307 ns               ;
+; N/A                                     ; 55.89 MHz ( period = 17.892 ns )                    ; snake:snake_u0|body_e[117] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.298 ns               ;
+; N/A                                     ; 55.90 MHz ( period = 17.889 ns )                    ; snake:snake_u0|body_e[126] ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.298 ns               ;
+; N/A                                     ; 55.90 MHz ( period = 17.888 ns )                    ; snake:snake_u0|body_e[109] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.299 ns               ;
+; N/A                                     ; 55.91 MHz ( period = 17.887 ns )                    ; snake:snake_u0|body_e[126] ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.296 ns               ;
+; N/A                                     ; 55.91 MHz ( period = 17.887 ns )                    ; snake:snake_u0|body_e[126] ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.296 ns               ;
+; N/A                                     ; 55.91 MHz ( period = 17.887 ns )                    ; snake:snake_u0|body_e[49]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.297 ns               ;
+; N/A                                     ; 55.92 MHz ( period = 17.884 ns )                    ; snake:snake_u0|body_e[126] ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.293 ns               ;
+; N/A                                     ; 55.92 MHz ( period = 17.882 ns )                    ; snake:snake_u0|body_e[117] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.288 ns               ;
+; N/A                                     ; 55.93 MHz ( period = 17.878 ns )                    ; snake:snake_u0|body_e[109] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.289 ns               ;
+; N/A                                     ; 55.94 MHz ( period = 17.875 ns )                    ; snake:snake_u0|body_e[82]  ; lives:lives_u0|LIVES[2]                                                  ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.313 ns               ;
+; N/A                                     ; 55.95 MHz ( period = 17.872 ns )                    ; snake:snake_u0|body_e[89]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.291 ns               ;
+; N/A                                     ; 55.96 MHz ( period = 17.870 ns )                    ; snake:snake_u0|body_e[89]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.289 ns               ;
+; N/A                                     ; 55.96 MHz ( period = 17.870 ns )                    ; snake:snake_u0|body_e[89]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.289 ns               ;
+; N/A                                     ; 55.97 MHz ( period = 17.867 ns )                    ; snake:snake_u0|body_e[89]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.286 ns               ;
+; N/A                                     ; 56.02 MHz ( period = 17.851 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.286 ns               ;
+; N/A                                     ; 56.03 MHz ( period = 17.849 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.284 ns               ;
+; N/A                                     ; 56.03 MHz ( period = 17.849 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.284 ns               ;
+; N/A                                     ; 56.03 MHz ( period = 17.846 ns )                    ; snake:snake_u0|body_e[84]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.281 ns               ;
+; N/A                                     ; 56.05 MHz ( period = 17.841 ns )                    ; snake:snake_u0|body_e[123] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.273 ns               ;
+; N/A                                     ; 56.07 MHz ( period = 17.835 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.244 ns               ;
+; N/A                                     ; 56.08 MHz ( period = 17.832 ns )                    ; snake:snake_u0|body_e[94]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.261 ns               ;
+; N/A                                     ; 56.08 MHz ( period = 17.831 ns )                    ; snake:snake_u0|body_e[123] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.263 ns               ;
+; N/A                                     ; 56.10 MHz ( period = 17.825 ns )                    ; snake:snake_u0|body_e[39]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.234 ns               ;
+; N/A                                     ; 56.11 MHz ( period = 17.822 ns )                    ; snake:snake_u0|body_e[94]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.251 ns               ;
+; N/A                                     ; 56.11 MHz ( period = 17.821 ns )                    ; snake:snake_u0|body_e[23]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.226 ns               ;
+; N/A                                     ; 56.12 MHz ( period = 17.820 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.234 ns               ;
+; N/A                                     ; 56.15 MHz ( period = 17.811 ns )                    ; snake:snake_u0|body_e[23]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.216 ns               ;
+; N/A                                     ; 56.15 MHz ( period = 17.810 ns )                    ; snake:snake_u0|body_e[128] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.224 ns               ;
+; N/A                                     ; 56.16 MHz ( period = 17.805 ns )                    ; snake:snake_u0|body_e[26]  ; lives:lives_u0|LIVES[2]                                                  ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.217 ns               ;
+; N/A                                     ; 56.19 MHz ( period = 17.796 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|state_register.paused       ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.212 ns               ;
+; N/A                                     ; 56.20 MHz ( period = 17.794 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|state_register.levelup      ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.210 ns               ;
+; N/A                                     ; 56.20 MHz ( period = 17.794 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|state_register.stage_select ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.210 ns               ;
+; N/A                                     ; 56.21 MHz ( period = 17.791 ns )                    ; snake:snake_u0|body_e[88]  ; finite_state_machine:finite_state_machine_u0|state_register.stageclear   ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.207 ns               ;
+; N/A                                     ; 56.24 MHz ( period = 17.782 ns )                    ; snake:snake_u0|body_e[55]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.205 ns               ;
+; N/A                                     ; 56.24 MHz ( period = 17.781 ns )                    ; snake:snake_u0|body_e[82]  ; finite_state_machine:finite_state_machine_u0|state_register.game_over    ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.216 ns               ;
+; N/A                                     ; 56.26 MHz ( period = 17.774 ns )                    ; snake:snake_u0|body_e[116] ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.182 ns               ;
+; N/A                                     ; 56.27 MHz ( period = 17.773 ns )                    ; snake:snake_u0|body_e[53]  ; lives:lives_u0|LIVES[2]                                                  ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.191 ns               ;
+; N/A                                     ; 56.27 MHz ( period = 17.772 ns )                    ; snake:snake_u0|body_e[55]  ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.195 ns               ;
+; N/A                                     ; 56.29 MHz ( period = 17.764 ns )                    ; snake:snake_u0|body_e[116] ; finite_state_machine:finite_state_machine_u0|rgb_register[0]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.172 ns               ;
+; N/A                                     ; 56.30 MHz ( period = 17.763 ns )                    ; snake:snake_u0|body_e[42]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.177 ns               ;
+; N/A                                     ; 56.32 MHz ( period = 17.755 ns )                    ; snake:snake_u0|body_e[72]  ; finite_state_machine:finite_state_machine_u0|rgb_register[1]             ; CLOCK_50   ; CLOCK_50 ; None                        ; None                      ; 10.180 ns               ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                            ;                                                                          ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------------+--------------------------------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'CLOCK_50'                                                                                                                                                                                          ;
++------------------------------------------+----------------------------+----------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                       ; To                         ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+----------------------------+----------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[63]  ; snake:snake_u0|body_e[64]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 0.651 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[109] ; snake:snake_u0|body_e[110] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 0.792 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[93]  ; snake:snake_u0|body_e[94]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 0.796 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[69]  ; snake:snake_u0|body_e[70]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 0.898 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[103] ; snake:snake_u0|body_e[104] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.034 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[31]  ; snake:snake_u0|body_e[32]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.041 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[107] ; snake:snake_u0|body_e[108] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.166 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[60]  ; snake:snake_u0|body_e[61]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.181 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[10]  ; snake:snake_u0|body_e[11]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.219 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[123] ; snake:snake_u0|body_e[124] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.241 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[119] ; snake:snake_u0|body_e[120] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.243 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[41]  ; snake:snake_u0|body_e[42]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.290 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[120] ; snake:snake_u0|body_e[121] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.303 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[3]   ; snake:snake_u0|body_e[4]   ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.308 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[39]  ; snake:snake_u0|body_e[40]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.296 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[108] ; snake:snake_u0|body_e[109] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.332 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[88]  ; snake:snake_u0|body_e[89]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.357 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[97]  ; snake:snake_u0|body_e[98]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.366 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[75]  ; snake:snake_u0|body_e[76]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.370 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[84]  ; snake:snake_u0|body_e[85]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.433 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[116] ; snake:snake_u0|body_e[117] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.520 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[46]  ; snake:snake_u0|body_e[47]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.515 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[62]  ; snake:snake_u0|body_e[63]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.534 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[33]  ; snake:snake_u0|body_e[34]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.567 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[36]  ; snake:snake_u0|body_e[37]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.579 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[24]  ; snake:snake_u0|body_e[25]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.579 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[110] ; snake:snake_u0|body_e[111] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.597 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[117] ; snake:snake_u0|body_e[118] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.602 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[94]  ; snake:snake_u0|body_e[95]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.614 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[68]  ; snake:snake_u0|body_e[69]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.614 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[83]  ; snake:snake_u0|body_e[84]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.636 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[78]  ; snake:snake_u0|body_e[79]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.657 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[25]  ; snake:snake_u0|body_e[26]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.670 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[12]  ; snake:snake_u0|body_e[13]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.675 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[56]  ; snake:snake_u0|body_e[57]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.677 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[11]  ; snake:snake_u0|body_e[12]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.695 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[54]  ; snake:snake_u0|body_e[55]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.680 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[47]  ; snake:snake_u0|body_e[48]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.694 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[124] ; snake:snake_u0|body_e[125] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.693 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[61]  ; snake:snake_u0|body_e[62]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.720 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[22]  ; snake:snake_u0|body_e[23]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.716 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[66]  ; snake:snake_u0|body_e[67]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.719 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[81]  ; snake:snake_u0|body_e[82]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.712 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[111] ; snake:snake_u0|body_e[112] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.768 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[45]  ; snake:snake_u0|body_e[46]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.781 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[105] ; snake:snake_u0|body_e[106] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.787 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[13]  ; snake:snake_u0|body_e[14]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.839 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[48]  ; snake:snake_u0|body_e[49]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.855 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[53]  ; snake:snake_u0|body_e[54]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.860 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[16]  ; snake:snake_u0|body_e[17]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.913 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[127] ; snake:snake_u0|body_e[128] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.911 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[58]  ; snake:snake_u0|body_e[59]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.918 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[23]  ; snake:snake_u0|body_e[24]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.910 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[102] ; snake:snake_u0|body_e[103] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.918 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[52]  ; snake:snake_u0|body_e[53]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.927 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[64]  ; snake:snake_u0|body_e[65]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.950 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[121] ; snake:snake_u0|body_e[122] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.939 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[71]  ; snake:snake_u0|body_e[72]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.943 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[100] ; snake:snake_u0|body_e[101] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.955 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[112] ; snake:snake_u0|body_e[113] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.947 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[74]  ; snake:snake_u0|body_e[75]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.976 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[90]  ; snake:snake_u0|body_e[91]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.982 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[95]  ; snake:snake_u0|body_e[96]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.020 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[70]  ; snake:snake_u0|body_e[71]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.002 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[77]  ; snake:snake_u0|body_e[78]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 1.990 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[85]  ; snake:snake_u0|body_e[86]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.022 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[126] ; snake:snake_u0|body_e[127] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.011 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[96]  ; snake:snake_u0|body_e[97]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.023 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[104] ; snake:snake_u0|body_e[105] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.040 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[87]  ; snake:snake_u0|body_e[88]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.036 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[86]  ; snake:snake_u0|body_e[87]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.066 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[19]  ; snake:snake_u0|body_e[20]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.068 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[27]  ; snake:snake_u0|body_e[28]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.097 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[7]   ; snake:snake_u0|body_e[8]   ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.159 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[8]   ; snake:snake_u0|body_e[9]   ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.142 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[57]  ; snake:snake_u0|body_e[58]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.176 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[59]  ; snake:snake_u0|body_e[60]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.178 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[26]  ; snake:snake_u0|body_e[27]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.230 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[18]  ; snake:snake_u0|body_e[19]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.285 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[76]  ; snake:snake_u0|body_e[77]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.292 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[99]  ; snake:snake_u0|body_e[100] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.281 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[20]  ; snake:snake_u0|body_e[21]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.281 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[98]  ; snake:snake_u0|body_e[99]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.323 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[72]  ; snake:snake_u0|body_e[73]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.325 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[73]  ; snake:snake_u0|body_e[74]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.356 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[4]   ; snake:snake_u0|body_e[5]   ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.351 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[15]  ; snake:snake_u0|body_e[16]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.384 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[51]  ; snake:snake_u0|body_e[52]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.401 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[43]  ; snake:snake_u0|body_e[44]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.419 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[113] ; snake:snake_u0|body_e[114] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.451 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[28]  ; snake:snake_u0|body_e[29]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.431 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[49]  ; snake:snake_u0|body_e[50]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.455 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[37]  ; snake:snake_u0|body_e[38]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.471 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[101] ; snake:snake_u0|body_e[102] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.512 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[118] ; snake:snake_u0|body_e[119] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.504 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[6]   ; snake:snake_u0|body_e[7]   ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.514 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[42]  ; snake:snake_u0|body_e[43]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.552 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[65]  ; snake:snake_u0|body_e[66]  ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.575 ns                 ;
+; Not operational: Clock Skew > Data Delay ; snake:snake_u0|body_e[106] ; snake:snake_u0|body_e[107] ; CLOCK_50   ; CLOCK_50 ; None                       ; None                       ; 2.566 ns                 ;
++------------------------------------------+----------------------------+----------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                                                                    ;
++-------+--------------+------------+--------+------------------------------------------------------------------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From   ; To                                                                                             ; To Clock ;
++-------+--------------+------------+--------+------------------------------------------------------------------------------------------------+----------+
+; N/A   ; None         ; 4.204 ns   ; KEY[2] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A   ; None         ; 3.829 ns   ; KEY[0] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A   ; None         ; 3.571 ns   ; KEY[1] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A   ; None         ; 3.501 ns   ; KEY[3] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0] ; CLOCK_50 ;
++-------+--------------+------------+--------+------------------------------------------------------------------------------------------------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                                     ;
++-------+--------------+------------+-----------------------------------------------------------------------------+----------+------------+
+; Slack ; Required tco ; Actual tco ; From                                                                        ; To       ; From Clock ;
++-------+--------------+------------+-----------------------------------------------------------------------------+----------+------------+
+; N/A   ; None         ; 10.745 ns  ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[2]             ; LEDG[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 10.611 ns  ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[6]             ; LEDG[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 10.437 ns  ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[3]             ; LEDG[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 10.315 ns  ; finite_state_machine:finite_state_machine_u0|STATUS_INDICATOR[0]            ; LEDR[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.320 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]                ; VGA_B[2] ; CLOCK_50   ;
+; N/A   ; None         ; 9.312 ns   ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[4]             ; LEDG[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.305 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]                ; VGA_B[1] ; CLOCK_50   ;
+; N/A   ; None         ; 9.285 ns   ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[7]             ; LEDG[7]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.285 ns   ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[0]             ; LEDG[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.280 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]                ; VGA_B[3] ; CLOCK_50   ;
+; N/A   ; None         ; 9.203 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.191 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.182 ns   ; finite_state_machine:finite_state_machine_u0|STATUS_INDICATOR[1]            ; LEDR[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.137 ns   ; finite_state_machine:finite_state_machine_u0|STATUS_INDICATOR[2]            ; LEDR[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.083 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 9.073 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.956 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[0]                ; VGA_B[0] ; CLOCK_50   ;
+; N/A   ; None         ; 8.932 ns   ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[5]             ; LEDG[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.920 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.919 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.918 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]                ; VGA_G[1] ; CLOCK_50   ;
+; N/A   ; None         ; 8.911 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]                ; VGA_G[2] ; CLOCK_50   ;
+; N/A   ; None         ; 8.908 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.890 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.886 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.881 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.855 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.854 ns   ; vga_sync:vga_sync_u0|vertical_sync_register                                 ; VGA_VS   ; CLOCK_50   ;
+; N/A   ; None         ; 8.850 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.846 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[3] ; HEX2[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.805 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.794 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.715 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.709 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.668 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.612 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.607 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.605 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]                ; VGA_G[3] ; CLOCK_50   ;
+; N/A   ; None         ; 8.605 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[1]                ; VGA_G[0] ; CLOCK_50   ;
+; N/A   ; None         ; 8.603 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.595 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.591 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.590 ns   ; finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[1]             ; LEDG[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.582 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.576 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.572 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.570 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[1] ; HEX2[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.567 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.554 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.517 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.512 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.509 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.455 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.449 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.393 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.386 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.386 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.377 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.377 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.375 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.369 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.365 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.359 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.357 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.356 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.354 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.350 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.342 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.341 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[0] ; HEX2[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.333 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.328 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.328 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.293 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.254 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.249 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.244 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.237 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.218 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.211 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_2_register[2] ; HEX2[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.197 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.171 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.133 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.129 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.128 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.123 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.117 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.115 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.114 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.108 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.104 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.102 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.096 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.093 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.091 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.084 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.081 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.080 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.078 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.077 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.075 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.073 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.067 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[2]                ; VGA_R[0] ; CLOCK_50   ;
+; N/A   ; None         ; 8.055 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.055 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[2]                ; VGA_R[1] ; CLOCK_50   ;
+; N/A   ; None         ; 8.049 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.043 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[0] ; HEX1[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.035 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[3] ; HEX3[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.035 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[1] ; HEX1[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.033 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.028 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.028 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.015 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 8.013 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.998 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.981 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.963 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.958 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.955 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.946 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[1] ; HEX3[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.945 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[2] ; HEX0[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.936 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[1] ; HEX0[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.924 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.914 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[0] ; HEX0[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.899 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[0] ; HEX3[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.789 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_3_register[2] ; HEX3[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.771 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[3] ; HEX1[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.753 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[4]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.736 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[6]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.728 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[5]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.704 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[3]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.695 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[2]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.691 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_1_register[2] ; HEX1[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.582 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[1]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.556 ns   ; score:score_u0|four_digit_counter:four_digit_counter_u0|digit_0_register[3] ; HEX0[0]  ; CLOCK_50   ;
+; N/A   ; None         ; 7.521 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[2]                ; VGA_R[2] ; CLOCK_50   ;
+; N/A   ; None         ; 7.491 ns   ; finite_state_machine:finite_state_machine_u0|rgb_register[2]                ; VGA_R[3] ; CLOCK_50   ;
+; N/A   ; None         ; 7.487 ns   ; vga_sync:vga_sync_u0|horizontal_sync_register                               ; VGA_HS   ; CLOCK_50   ;
++-------+--------------+------------+-----------------------------------------------------------------------------+----------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; th                                                                                                                                                           ;
++---------------+-------------+-----------+--------+------------------------------------------------------------------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From   ; To                                                                                             ; To Clock ;
++---------------+-------------+-----------+--------+------------------------------------------------------------------------------------------------+----------+
+; N/A           ; None        ; -3.253 ns ; KEY[3] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A           ; None        ; -3.323 ns ; KEY[1] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A           ; None        ; -3.581 ns ; KEY[0] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst|flipflops[0] ; CLOCK_50 ;
+; N/A           ; None        ; -3.956 ns ; KEY[2] ; button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0] ; CLOCK_50 ;
++---------------+-------------+-----------+--------+------------------------------------------------------------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Sat Jan 31 16:39:31 2026
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off the_snake_game -c the_snake_game --timing_analysis_only
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "texts:texts_u0|bar_x[5]" is a latch
+    Warning: Node "texts:texts_u0|bar_x[6]" is a latch
+    Warning: Node "texts:texts_u0|bar_x[8]" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "CLOCK_50" is an undefined clock
+Warning: Found 34 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "items:items_u0|item_y_register[9]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[4]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[8]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[5]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[4]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[7]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[3]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[3]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[6]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[6]" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~5" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~6" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[9]" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~1" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~0" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[7]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_y_register[8]" as buffer
+    Info: Detected ripple clock "items:items_u0|item_x_register[5]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[5]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[7]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[6]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[8]" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~3" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~7" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~2" as buffer
+    Info: Detected gated clock "snake:snake_u0|ITEM_ATE~4" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[9]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_x_register[4]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[8]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[6]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[7]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[4]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[9]" as buffer
+    Info: Detected ripple clock "snake:snake_u0|head_y_register[5]" as buffer
+Info: Clock "CLOCK_50" has Internal fmax of 53.01 MHz between source register "snake:snake_u0|body_e[105]" and destination register "finite_state_machine:finite_state_machine_u0|rgb_register[1]" (period= 18.864 ns)
+    Info: + Longest register to register delay is 11.275 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X24_Y16_N25; Fanout = 4; REG Node = 'snake:snake_u0|body_e[105]'
+        Info: 2: + IC(0.405 ns) + CELL(0.512 ns) = 0.917 ns; Loc. = LCCOMB_X24_Y16_N10; Fanout = 1; COMB Node = 'snake:snake_u0|SNAKE_ON~33'
+        Info: 3: + IC(1.269 ns) + CELL(0.322 ns) = 2.508 ns; Loc. = LCCOMB_X23_Y24_N14; Fanout = 1; COMB Node = 'snake:snake_u0|SNAKE_ON~35'
+        Info: 4: + IC(2.307 ns) + CELL(0.278 ns) = 5.093 ns; Loc. = LCCOMB_X36_Y11_N14; Fanout = 1; COMB Node = 'snake:snake_u0|SNAKE_ON~39'
+        Info: 5: + IC(0.295 ns) + CELL(0.521 ns) = 5.909 ns; Loc. = LCCOMB_X36_Y11_N18; Fanout = 1; COMB Node = 'snake:snake_u0|SNAKE_ON~53'
+        Info: 6: + IC(1.654 ns) + CELL(0.278 ns) = 7.841 ns; Loc. = LCCOMB_X12_Y11_N0; Fanout = 1; COMB Node = 'snake:snake_u0|SNAKE_ON~214'
+        Info: 7: + IC(0.292 ns) + CELL(0.178 ns) = 8.311 ns; Loc. = LCCOMB_X12_Y11_N22; Fanout = 2; COMB Node = 'snake:snake_u0|SNAKE_ON~215'
+        Info: 8: + IC(1.162 ns) + CELL(0.178 ns) = 9.651 ns; Loc. = LCCOMB_X9_Y13_N22; Fanout = 1; COMB Node = 'finite_state_machine:finite_state_machine_u0|rgb_next_tmp[1]~25'
+        Info: 9: + IC(0.292 ns) + CELL(0.178 ns) = 10.121 ns; Loc. = LCCOMB_X9_Y13_N0; Fanout = 1; COMB Node = 'finite_state_machine:finite_state_machine_u0|rgb_next_tmp[1]~26'
+        Info: 10: + IC(0.880 ns) + CELL(0.178 ns) = 11.179 ns; Loc. = LCCOMB_X8_Y11_N2; Fanout = 1; COMB Node = 'finite_state_machine:finite_state_machine_u0|rgb_next_tmp[1]~27'
+        Info: 11: + IC(0.000 ns) + CELL(0.096 ns) = 11.275 ns; Loc. = LCFF_X8_Y11_N3; Fanout = 4; REG Node = 'finite_state_machine:finite_state_machine_u0|rgb_register[1]'
+        Info: Total cell delay = 2.719 ns ( 24.12 % )
+        Info: Total interconnect delay = 8.556 ns ( 75.88 % )
+    Info: - Smallest clock skew is -7.350 ns
+        Info: + Shortest clock path from clock "CLOCK_50" to destination register is 2.865 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+            Info: 2: + IC(0.238 ns) + CELL(0.000 ns) = 1.264 ns; Loc. = CLKCTRL_G2; Fanout = 1844; COMB Node = 'CLOCK_50~clkctrl'
+            Info: 3: + IC(0.999 ns) + CELL(0.602 ns) = 2.865 ns; Loc. = LCFF_X8_Y11_N3; Fanout = 4; REG Node = 'finite_state_machine:finite_state_machine_u0|rgb_register[1]'
+            Info: Total cell delay = 1.628 ns ( 56.82 % )
+            Info: Total interconnect delay = 1.237 ns ( 43.18 % )
+        Info: - Longest clock path from clock "CLOCK_50" to source register is 10.215 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+            Info: 2: + IC(1.182 ns) + CELL(0.879 ns) = 3.087 ns; Loc. = LCFF_X12_Y15_N1; Fanout = 92; REG Node = 'items:items_u0|item_y_register[3]'
+            Info: 3: + IC(0.894 ns) + CELL(0.177 ns) = 4.158 ns; Loc. = LCCOMB_X12_Y15_N26; Fanout = 66; COMB Node = 'snake:snake_u0|ITEM_ATE~0'
+            Info: 4: + IC(1.522 ns) + CELL(0.322 ns) = 6.002 ns; Loc. = LCCOMB_X20_Y11_N14; Fanout = 1; COMB Node = 'snake:snake_u0|ITEM_ATE~2'
+            Info: 5: + IC(0.300 ns) + CELL(0.491 ns) = 6.793 ns; Loc. = LCCOMB_X20_Y11_N18; Fanout = 7; COMB Node = 'snake:snake_u0|ITEM_ATE'
+            Info: 6: + IC(1.827 ns) + CELL(0.000 ns) = 8.620 ns; Loc. = CLKCTRL_G1; Fanout = 126; COMB Node = 'snake:snake_u0|ITEM_ATE~clkctrl'
+            Info: 7: + IC(0.993 ns) + CELL(0.602 ns) = 10.215 ns; Loc. = LCFF_X24_Y16_N25; Fanout = 4; REG Node = 'snake:snake_u0|body_e[105]'
+            Info: Total cell delay = 3.497 ns ( 34.23 % )
+            Info: Total interconnect delay = 6.718 ns ( 65.77 % )
+    Info: + Micro clock to output delay of source is 0.277 ns
+    Info: + Micro setup delay of destination is -0.038 ns
+Warning: Circuit may not operate. Detected 99 non-operational path(s) clocked by clock "CLOCK_50" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "snake:snake_u0|body_e[63]" and destination pin or register "snake:snake_u0|body_e[64]" for clock "CLOCK_50" (Hold time is 1.933 ns)
+    Info: + Largest clock skew is 2.575 ns
+        Info: + Longest clock path from clock "CLOCK_50" to destination register is 10.193 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+            Info: 2: + IC(1.182 ns) + CELL(0.879 ns) = 3.087 ns; Loc. = LCFF_X12_Y15_N1; Fanout = 92; REG Node = 'items:items_u0|item_y_register[3]'
+            Info: 3: + IC(0.894 ns) + CELL(0.177 ns) = 4.158 ns; Loc. = LCCOMB_X12_Y15_N26; Fanout = 66; COMB Node = 'snake:snake_u0|ITEM_ATE~0'
+            Info: 4: + IC(1.522 ns) + CELL(0.322 ns) = 6.002 ns; Loc. = LCCOMB_X20_Y11_N14; Fanout = 1; COMB Node = 'snake:snake_u0|ITEM_ATE~2'
+            Info: 5: + IC(0.300 ns) + CELL(0.491 ns) = 6.793 ns; Loc. = LCCOMB_X20_Y11_N18; Fanout = 7; COMB Node = 'snake:snake_u0|ITEM_ATE'
+            Info: 6: + IC(1.827 ns) + CELL(0.000 ns) = 8.620 ns; Loc. = CLKCTRL_G1; Fanout = 126; COMB Node = 'snake:snake_u0|ITEM_ATE~clkctrl'
+            Info: 7: + IC(0.971 ns) + CELL(0.602 ns) = 10.193 ns; Loc. = LCFF_X19_Y7_N21; Fanout = 4; REG Node = 'snake:snake_u0|body_e[64]'
+            Info: Total cell delay = 3.497 ns ( 34.31 % )
+            Info: Total interconnect delay = 6.696 ns ( 65.69 % )
+        Info: - Shortest clock path from clock "CLOCK_50" to source register is 7.618 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+            Info: 2: + IC(1.297 ns) + CELL(0.879 ns) = 3.202 ns; Loc. = LCFF_X20_Y11_N7; Fanout = 136; REG Node = 'items:items_u0|item_x_register[6]'
+            Info: 3: + IC(0.365 ns) + CELL(0.178 ns) = 3.745 ns; Loc. = LCCOMB_X20_Y11_N12; Fanout = 1; COMB Node = 'snake:snake_u0|ITEM_ATE~3'
+            Info: 4: + IC(0.295 ns) + CELL(0.178 ns) = 4.218 ns; Loc. = LCCOMB_X20_Y11_N18; Fanout = 7; COMB Node = 'snake:snake_u0|ITEM_ATE'
+            Info: 5: + IC(1.827 ns) + CELL(0.000 ns) = 6.045 ns; Loc. = CLKCTRL_G1; Fanout = 126; COMB Node = 'snake:snake_u0|ITEM_ATE~clkctrl'
+            Info: 6: + IC(0.971 ns) + CELL(0.602 ns) = 7.618 ns; Loc. = LCFF_X19_Y7_N1; Fanout = 4; REG Node = 'snake:snake_u0|body_e[63]'
+            Info: Total cell delay = 2.863 ns ( 37.58 % )
+            Info: Total interconnect delay = 4.755 ns ( 62.42 % )
+    Info: - Micro clock to output delay of source is 0.277 ns
+    Info: - Shortest register to register delay is 0.651 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X19_Y7_N1; Fanout = 4; REG Node = 'snake:snake_u0|body_e[63]'
+        Info: 2: + IC(0.377 ns) + CELL(0.178 ns) = 0.555 ns; Loc. = LCCOMB_X19_Y7_N20; Fanout = 1; COMB Node = 'snake:snake_u0|body_e[64]~feeder'
+        Info: 3: + IC(0.000 ns) + CELL(0.096 ns) = 0.651 ns; Loc. = LCFF_X19_Y7_N21; Fanout = 4; REG Node = 'snake:snake_u0|body_e[64]'
+        Info: Total cell delay = 0.274 ns ( 42.09 % )
+        Info: Total interconnect delay = 0.377 ns ( 57.91 % )
+    Info: + Micro hold delay of destination is 0.286 ns
+Info: tsu for register "button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0]" (data pin = "KEY[2]", clock pin = "CLOCK_50") is 4.204 ns
+    Info: + Longest pin to register delay is 7.113 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.874 ns) = 0.874 ns; Loc. = PIN_T22; Fanout = 1; PIN Node = 'KEY[2]'
+        Info: 2: + IC(5.826 ns) + CELL(0.413 ns) = 7.113 ns; Loc. = LCFF_X47_Y1_N5; Fanout = 4; REG Node = 'button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0]'
+        Info: Total cell delay = 1.287 ns ( 18.09 % )
+        Info: Total interconnect delay = 5.826 ns ( 81.91 % )
+    Info: + Micro setup delay of destination is -0.038 ns
+    Info: - Shortest clock path from clock "CLOCK_50" to destination register is 2.871 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+        Info: 2: + IC(0.238 ns) + CELL(0.000 ns) = 1.264 ns; Loc. = CLKCTRL_G2; Fanout = 1844; COMB Node = 'CLOCK_50~clkctrl'
+        Info: 3: + IC(1.005 ns) + CELL(0.602 ns) = 2.871 ns; Loc. = LCFF_X47_Y1_N5; Fanout = 4; REG Node = 'button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst|flipflops[0]'
+        Info: Total cell delay = 1.628 ns ( 56.70 % )
+        Info: Total interconnect delay = 1.243 ns ( 43.30 % )
+Info: tco from clock "CLOCK_50" to destination pin "LEDG[2]" through register "finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[2]" is 10.745 ns
+    Info: + Longest clock path from clock "CLOCK_50" to source register is 2.867 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+        Info: 2: + IC(0.238 ns) + CELL(0.000 ns) = 1.264 ns; Loc. = CLKCTRL_G2; Fanout = 1844; COMB Node = 'CLOCK_50~clkctrl'
+        Info: 3: + IC(1.001 ns) + CELL(0.602 ns) = 2.867 ns; Loc. = LCFF_X9_Y12_N19; Fanout = 1; REG Node = 'finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[2]'
+        Info: Total cell delay = 1.628 ns ( 56.78 % )
+        Info: Total interconnect delay = 1.239 ns ( 43.22 % )
+    Info: + Micro clock to output delay of source is 0.277 ns
+    Info: + Longest register to pin delay is 7.601 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X9_Y12_N19; Fanout = 1; REG Node = 'finite_state_machine:finite_state_machine_u0|STATE_INDICATOR[2]'
+        Info: 2: + IC(4.751 ns) + CELL(2.850 ns) = 7.601 ns; Loc. = PIN_V22; Fanout = 0; PIN Node = 'LEDG[2]'
+        Info: Total cell delay = 2.850 ns ( 37.50 % )
+        Info: Total interconnect delay = 4.751 ns ( 62.50 % )
+Info: th for register "button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0]" (data pin = "KEY[3]", clock pin = "CLOCK_50") is -3.253 ns
+    Info: + Longest clock path from clock "CLOCK_50" to destination register is 2.859 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.026 ns) = 1.026 ns; Loc. = PIN_L1; Fanout = 27; CLK Node = 'CLOCK_50'
+        Info: 2: + IC(0.238 ns) + CELL(0.000 ns) = 1.264 ns; Loc. = CLKCTRL_G2; Fanout = 1844; COMB Node = 'CLOCK_50~clkctrl'
+        Info: 3: + IC(0.993 ns) + CELL(0.602 ns) = 2.859 ns; Loc. = LCFF_X47_Y9_N5; Fanout = 4; REG Node = 'button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0]'
+        Info: Total cell delay = 1.628 ns ( 56.94 % )
+        Info: Total interconnect delay = 1.231 ns ( 43.06 % )
+    Info: + Micro hold delay of destination is 0.286 ns
+    Info: - Shortest pin to register delay is 6.398 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.874 ns) = 0.874 ns; Loc. = PIN_T21; Fanout = 1; PIN Node = 'KEY[3]'
+        Info: 2: + IC(5.111 ns) + CELL(0.413 ns) = 6.398 ns; Loc. = LCFF_X47_Y9_N5; Fanout = 4; REG Node = 'button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst|flipflops[0]'
+        Info: Total cell delay = 1.287 ns ( 20.12 % )
+        Info: Total interconnect delay = 5.111 ns ( 79.88 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 246 megabytes
+    Info: Processing ended: Sat Jan 31 16:39:33 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

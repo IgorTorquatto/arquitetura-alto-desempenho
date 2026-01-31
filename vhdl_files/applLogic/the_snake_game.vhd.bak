@@ -1,0 +1,114 @@
+-- button_controller.vhd
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY button_controller IS
+    PORT (
+        clk     : IN  STD_LOGIC;
+        reset   : IN  STD_LOGIC;
+        KEY     : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+        buttons : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    );
+END button_controller;
+
+ARCHITECTURE behavioral OF button_controller IS
+    SIGNAL key_debounced : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL key_prev      : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL buttons_reg   : STD_LOGIC_VECTOR(6 DOWNTO 0);
+    
+    -- Simple debouncer signals
+    SIGNAL debounce_counter : STD_LOGIC_VECTOR(19 DOWNTO 0) := (OTHERS => '0');
+    
+BEGIN
+    -- Simple debouncing process
+    PROCESS(clk, reset)
+    BEGIN
+        IF reset = '1' THEN
+            debounce_counter <= (OTHERS => '0');
+            key_debounced <= (OTHERS => '1');
+        ELSIF rising_edge(clk) THEN
+            debounce_counter <= STD_LOGIC_VECTOR(unsigned(debounce_counter) + 1);
+            
+            IF debounce_counter = (debounce_counter'RANGE => '0') THEN
+                key_debounced <= KEY;
+            END IF;
+        END IF;
+    END PROCESS;
+    
+    -- Main button processing
+    PROCESS(clk, reset)
+        VARIABLE direction_counter : INTEGER := 0;
+        CONSTANT DIRECTION_DELAY : INTEGER := 5000000;
+    BEGIN
+        IF reset = '1' THEN
+            key_prev <= (OTHERS => '1');
+            buttons_reg <= (OTHERS => '0');
+            direction_counter := 0;
+        ELSIF rising_edge(clk) THEN
+            -- Reset button bits
+            buttons_reg <= (OTHERS => '0');
+            
+            -- Detect falling edge
+            FOR i IN 0 TO 3 LOOP
+                IF key_prev(i) = '1' AND key_debounced(i) = '0' THEN
+                    CASE i IS
+                        WHEN 0 =>    -- KEY[0] - Reset
+                            buttons_reg(4) <= '1';
+                        WHEN 1 =>    -- KEY[1] - Pause
+                            buttons_reg(5) <= '1';
+                        WHEN 2 =>    -- KEY[2] - Up/Down
+                            IF buttons_reg(2) = '0' THEN
+                                buttons_reg(2) <= '1';
+                                buttons_reg(3) <= '0';
+                            ELSE
+                                buttons_reg(2) <= '0';
+                                buttons_reg(3) <= '1';
+                            END IF;
+                        WHEN 3 =>    -- KEY[3] - Left/Right
+                            IF buttons_reg(0) = '0' THEN
+                                buttons_reg(0) <= '1';
+                                buttons_reg(1) <= '0';
+                            ELSE
+                                buttons_reg(0) <= '0';
+                                buttons_reg(1) <= '1';
+                            END IF;
+                        WHEN OTHERS =>
+                            NULL;
+                    END CASE;
+                END IF;
+            END LOOP;
+            
+            key_prev <= key_debounced;
+            
+            -- Continuous direction control
+            direction_counter := direction_counter + 1;
+            IF direction_counter >= DIRECTION_DELAY THEN
+                direction_counter := 0;
+                
+                IF key_debounced(2) = '0' THEN
+                    IF buttons_reg(2) = '0' THEN
+                        buttons_reg(2) <= '1';
+                        buttons_reg(3) <= '0';
+                    ELSE
+                        buttons_reg(2) <= '0';
+                        buttons_reg(3) <= '1';
+                    END IF;
+                END IF;
+                
+                IF key_debounced(3) = '0' THEN
+                    IF buttons_reg(0) = '0' THEN
+                        buttons_reg(0) <= '1';
+                        buttons_reg(1) <= '0';
+                    ELSE
+                        buttons_reg(0) <= '0';
+                        buttons_reg(1) <= '1';
+                    END IF;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+    
+    buttons <= buttons_reg;
+    
+END behavioral;

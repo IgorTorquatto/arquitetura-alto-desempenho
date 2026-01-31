@@ -1,0 +1,969 @@
+Version 9.0 Build 132 02/25/2009 SJ Web Edition
+11
+980
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+..|..|..|..|..|..|..|..|luca|desktop|the_snake_game|vhdl_files|libs|
+-- End Library Paths --
+-- Start VHDL Libraries --
+vhdl_files|libs|the_snake_game_package.vhd
+libs
+-- End VHDL Libraries --
+# entity
+the_snake_game
+# storage
+db|the_snake_game.(0).cnf
+db|the_snake_game.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|applLogic|the_snake_game.vhd
+1cb2b966a699624c2496e3fe144d925
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# include_file {
+vhdl_files|roms|font_rom.vhd
+c8713dcf78f411ea906217b85a83aff8
+vhdl_files|peripherals|button_controller.vhd
+fe2e483ee1f076cf3e767088d272ad8e
+vhdl_files|utils|timer2.vhd
+d7e84168f75b019676880ee41f0603a
+vhdl_files|utils|score.vhd
+b527d99972e1e7dbc87646de192e09e
+vhdl_files|logic|gui|snake.vhd
+50ab729d2d3c1d25f95783fc22269e12
+vhdl_files|logic|gui|texts.vhd
+9fa02125dd13d43db9684f742f364142
+vhdl_files|utils|four_digit_counter.vhd
+ed9837b59efcf6a0f398cd1382658b8
+vhdl_files|logic|items.vhd
+869ebd4743c91c2384c75ee2a54512d2
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+vhdl_files|logic|finite_state_machine.vhd
+cbe4e5fdcaee72d51a0364cef6edaf1
+vhdl_files|utils|level.vhd
+b98f1544fb41e36e393168ae1d83da0
+vhdl_files|utils|difficulty.vhd
+534739e5829fb880ace9a82c47cd46d
+vhdl_files|logic|lives.vhd
+fe0453280aed970e22bf237b2b92
+vhdl_files|utils|timer.vhd
+592a4d7397cac1ecb0ea8a16553ea3
+vhdl_files|logic|gui|stages.vhd
+913b99606f9dbe67f657c39b16f1f678
+vhdl_files|peripherals|vga_sync.vhd
+29b34d60323f74a47d97ae2628b625e9
+}
+# hierarchies {
+|
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+button_controller
+# storage
+db|the_snake_game.(1).cnf
+db|the_snake_game.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|peripherals|button_controller.vhd
+fe2e483ee1f076cf3e767088d272ad8e
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(key)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(buttons)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+button_controller:button_controller_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+debouncer
+# storage
+db|the_snake_game.(2).cnf
+db|the_snake_game.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|debouncer.vhd
+d97c2c46abb5753f8dbecf6fcf26f042
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+counter_size
+19
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+button_controller:button_controller_u0|debouncer:\gen_debouncers:0:debouncer_inst
+button_controller:button_controller_u0|debouncer:\gen_debouncers:1:debouncer_inst
+button_controller:button_controller_u0|debouncer:\gen_debouncers:2:debouncer_inst
+button_controller:button_controller_u0|debouncer:\gen_debouncers:3:debouncer_inst
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+vga_sync
+# storage
+db|the_snake_game.(3).cnf
+db|the_snake_game.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|peripherals|vga_sync.vhd
+29b34d60323f74a47d97ae2628b625e9
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+}
+# hierarchies {
+vga_sync:vga_sync_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+finite_state_machine
+# storage
+db|the_snake_game.(4).cnf
+db|the_snake_game.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|finite_state_machine.vhd
+cbe4e5fdcaee72d51a0364cef6edaf1
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(buttons)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(map_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(snake_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(text_on)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(text_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(restart)
+1 downto 0
+PARAMETER_STRING
+USR
+ constraint(lives)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(status_indicator)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(state_indicator)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+finite_state_machine:finite_state_machine_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+stages
+# storage
+db|the_snake_game.(5).cnf
+db|the_snake_game.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|gui|stages.vhd
+913b99606f9dbe67f657c39b16f1f678
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(head_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(head_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(map_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+}
+# hierarchies {
+stages:stages_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+items
+# storage
+db|the_snake_game.(6).cnf
+db|the_snake_game.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|items.vhd
+869ebd4743c91c2384c75ee2a54512d2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+}
+# hierarchies {
+items:items_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+snake
+# storage
+db|the_snake_game.(7).cnf
+db|the_snake_game.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|gui|snake.vhd
+50ab729d2d3c1d25f95783fc22269e12
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(restart)
+1 downto 0
+PARAMETER_STRING
+USR
+ constraint(buttons)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(item_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(head_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(head_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(snake_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+}
+# hierarchies {
+snake:snake_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+texts
+# storage
+db|the_snake_game.(8).cnf
+db|the_snake_game.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|gui|texts.vhd
+9fa02125dd13d43db9684f742f364142
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(state)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(buttons)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_0)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_1)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_2)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_3)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(stage)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(level)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(lives)
+2 downto 0
+PARAMETER_STRING
+USR
+ constraint(text_on)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(text_rgb)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|roms|font_rom.vhd
+c8713dcf78f411ea906217b85a83aff8
+vhdl_files|libs|the_snake_game_package.vhd
+98cf8f90308dee9049682b4ab25a6d8
+}
+# hierarchies {
+texts:texts_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+font_rom
+# storage
+db|the_snake_game.(9).cnf
+db|the_snake_game.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|roms|font_rom.vhd
+c8713dcf78f411ea906217b85a83aff8
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(address)
+10 downto 0
+PARAMETER_STRING
+USR
+ constraint(data)
+0 to 7
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+texts:texts_u0|font_rom:font_unit
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+score
+# storage
+db|the_snake_game.(10).cnf
+db|the_snake_game.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|score.vhd
+b527d99972e1e7dbc87646de192e09e
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(digit_0)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_1)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_2)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_3)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex0)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex1)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex2)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex3)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+vhdl_files|utils|four_digit_counter.vhd
+ed9837b59efcf6a0f398cd1382658b8
+}
+# hierarchies {
+score:score_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+four_digit_counter
+# storage
+db|the_snake_game.(11).cnf
+db|the_snake_game.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|four_digit_counter.vhd
+ed9837b59efcf6a0f398cd1382658b8
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(digit_0)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_1)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_2)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(digit_3)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex0)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex1)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex2)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(hex3)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+score:score_u0|four_digit_counter:four_digit_counter_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+level
+# storage
+db|the_snake_game.(12).cnf
+db|the_snake_game.(12).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|level.vhd
+b98f1544fb41e36e393168ae1d83da0
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(restart)
+1 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+level:level_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+difficulty
+# storage
+db|the_snake_game.(13).cnf
+db|the_snake_game.(13).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|difficulty.vhd
+534739e5829fb880ace9a82c47cd46d
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+difficulty:difficulty_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+lives
+# storage
+db|the_snake_game.(14).cnf
+db|the_snake_game.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|logic|lives.vhd
+fe0453280aed970e22bf237b2b92
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(restart)
+1 downto 0
+PARAMETER_STRING
+USR
+ constraint(lives)
+2 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+lives:lives_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+timer
+# storage
+db|the_snake_game.(15).cnf
+db|the_snake_game.(15).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|timer.vhd
+592a4d7397cac1ecb0ea8a16553ea3
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(pixel_x)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(pixel_y)
+9 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+timer:timer_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+timer2
+# storage
+db|the_snake_game.(16).cnf
+db|the_snake_game.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vhdl_files|utils|timer2.vhd
+d7e84168f75b019676880ee41f0603a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+timer2:timer2_u0
+}
+# lmf
+..|..|..|..|..|..|..|..|..|altera|90|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# complete
+
