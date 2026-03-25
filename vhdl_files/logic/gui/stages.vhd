@@ -104,135 +104,167 @@ architecture arch of stages is
 		head_on_wall_temp_2(i) <= '1' when (wall_x(i)=HEAD_X) and (wall_y(i)=HEAD_Y) else '0';
 	end generate;
 
-------------------------------------------------------------------------------------------------------------------------------
--- LEVEL SET 3
-	-- Wall Placement on Stage, specify stage as well.
-	wall_x(0) <= to_unsigned(272,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-				 
-	wall_y(0) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
-	wall_x(1) <= to_unsigned(368,10) when stage_select=1 else
-				 to_unsigned(1000,10) when stage_select=2 else
-				 to_unsigned(0,10);	 
-		
-	wall_y(1) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	------------------------------------------------------------------------------------------------------------------------------
+-- LEVEL SET 1 / 2 / 3 / 4
+	-- Stage 1: scattered blocks with wide spacing
+	wall_x(0) <= to_unsigned(96,10) when stage_select=1 else 
+				 to_unsigned(112,10) when stage_select=2 else 
+				 to_unsigned(80,10) when stage_select=3 else
+				 to_unsigned(128,10);
+
+	wall_y(0) <= to_unsigned(112,10) when stage_select=1 else 
+				 to_unsigned(96,10) when stage_select=2 else 
+				 to_unsigned(80,10) when stage_select=3 else
+				 to_unsigned(112,10);
 	----------------------------------------------------
-	wall_x(2) <= to_unsigned(416,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-				 
-	wall_y(2) <= to_unsigned(192,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	wall_x(1) <= to_unsigned(320,10) when stage_select=1 else
+				 to_unsigned(224,10) when stage_select=2 else
+				 to_unsigned(176,10) when stage_select=3 else
+				 to_unsigned(256,10);
+
+	wall_y(1) <= to_unsigned(80,10) when stage_select=1 else 
+				 to_unsigned(96,10) when stage_select=2 else 
+				 to_unsigned(144,10) when stage_select=3 else
+				 to_unsigned(112,10);
 	----------------------------------------------------
-	wall_x(3) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
-	wall_y(3) <= to_unsigned(192,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
-	wall_x(4) <= to_unsigned(320,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);	 
-	
-	wall_y(4) <= to_unsigned(192,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	wall_x(2) <= to_unsigned(208,10) when stage_select=1 else 
+				 to_unsigned(352,10) when stage_select=2 else 
+				 to_unsigned(272,10) when stage_select=3 else
+				 to_unsigned(384,10);
+
+	wall_y(2) <= to_unsigned(176,10) when stage_select=1 else 
+				 to_unsigned(112,10) when stage_select=2 else 
+				 to_unsigned(208,10) when stage_select=3 else
+				 to_unsigned(112,10);
 	----------------------------------------------------
-	wall_x(5) <= to_unsigned(272,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);	 
-	
-	wall_y(5) <= to_unsigned(288,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	wall_x(3) <= to_unsigned(416,10) when stage_select=1 else 
+				 to_unsigned(464,10) when stage_select=2 else 
+				 to_unsigned(368,10) when stage_select=3 else
+				 to_unsigned(512,10);
+
+	wall_y(3) <= to_unsigned(160,10) when stage_select=1 else 
+				 to_unsigned(112,10) when stage_select=2 else 
+				 to_unsigned(272,10) when stage_select=3 else
+				 to_unsigned(112,10);
 	----------------------------------------------------
-	wall_x(6) <= to_unsigned(240,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-				 
+	wall_x(4) <= to_unsigned(144,10) when stage_select=1 else 
+				 to_unsigned(160,10) when stage_select=2 else 
+				 to_unsigned(464,10) when stage_select=3 else
+				 to_unsigned(128,10);
+
+	wall_y(4) <= to_unsigned(240,10) when stage_select=1 else 
+				 to_unsigned(208,10) when stage_select=2 else 
+				 to_unsigned(336,10) when stage_select=3 else
+				 to_unsigned(224,10);
+	----------------------------------------------------
+	wall_x(5) <= to_unsigned(304,10) when stage_select=1 else 
+				 to_unsigned(272,10) when stage_select=2 else 
+				 to_unsigned(560,10) when stage_select=3 else
+				 to_unsigned(256,10);
+
+	wall_y(5) <= to_unsigned(240,10) when stage_select=1 else 
+				 to_unsigned(208,10) when stage_select=2 else 
+				 to_unsigned(400,10) when stage_select=3 else
+				 to_unsigned(224,10);
+	----------------------------------------------------
+	wall_x(6) <= to_unsigned(464,10) when stage_select=1 else 
+				 to_unsigned(400,10) when stage_select=2 else 
+				 to_unsigned(144,10) when stage_select=3 else
+				 to_unsigned(384,10);
+
 	wall_y(6) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+				 to_unsigned(208,10) when stage_select=2 else 
+				 to_unsigned(112,10) when stage_select=3 else
+				 to_unsigned(224,10);
 	----------------------------------------------------
-	wall_x(7) <= to_unsigned(240,10) when stage_select=1 else
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
-	wall_y(7) <= to_unsigned(256,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
+	wall_x(7) <= to_unsigned(80,10) when stage_select=1 else
+				 to_unsigned(512,10) when stage_select=2 else 
+				 to_unsigned(240,10) when stage_select=3 else
+				 to_unsigned(512,10);
+
+	wall_y(7) <= to_unsigned(320,10) when stage_select=1 else 
+				 to_unsigned(208,10) when stage_select=2 else 
+				 to_unsigned(176,10) when stage_select=3 else
+				 to_unsigned(224,10);
+	----------------------------------------------------
 	wall_x(8) <= to_unsigned(240,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
-	wall_y(8) <= to_unsigned(288,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+				 to_unsigned(96,10) when stage_select=2 else 
+				 to_unsigned(336,10) when stage_select=3 else
+				 to_unsigned(96,10);
+
+	wall_y(8) <= to_unsigned(320,10) when stage_select=1 else 
+				 to_unsigned(304,10) when stage_select=2 else 
+				 to_unsigned(240,10) when stage_select=3 else
+				 to_unsigned(336,10);
 	----------------------------------------------------
-	wall_x(9) <= to_unsigned(320,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
+	wall_x(9) <= to_unsigned(384,10) when stage_select=1 else 
+				 to_unsigned(224,10) when stage_select=2 else 
+				 to_unsigned(432,10) when stage_select=3 else
+				 to_unsigned(208,10);
+
 	wall_y(9) <= to_unsigned(320,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
-	wall_x(10) <= to_unsigned(400,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
-	wall_y(10) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
-	wall_x(11) <= to_unsigned(400,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-		
-	wall_y(11) <= to_unsigned(288,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------			 
-	wall_x(12) <= to_unsigned(416,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else  
-				 to_unsigned(0,10);
-	
-	wall_y(12) <= to_unsigned(320,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	----------------------------------------------------		 
+				 to_unsigned(304,10) when stage_select=2 else 
+				 to_unsigned(304,10) when stage_select=3 else
+				 to_unsigned(336,10);
+	----------------------------------------------------
+	wall_x(10) <= to_unsigned(528,10) when stage_select=1 else 
+				 to_unsigned(336,10) when stage_select=2 else 
+				 to_unsigned(528,10) when stage_select=3 else
+				 to_unsigned(336,10);
+
+	wall_y(10) <= to_unsigned(304,10) when stage_select=1 else 
+				 to_unsigned(304,10) when stage_select=2 else 
+				 to_unsigned(368,10) when stage_select=3 else
+				 to_unsigned(336,10);
+	----------------------------------------------------
+	wall_x(11) <= to_unsigned(128,10) when stage_select=1 else 
+				 to_unsigned(448,10) when stage_select=2 else 
+				 to_unsigned(112,10) when stage_select=3 else
+				 to_unsigned(464,10);
+
+	wall_y(11) <= to_unsigned(400,10) when stage_select=1 else 
+				 to_unsigned(304,10) when stage_select=2 else 
+				 to_unsigned(208,10) when stage_select=3 else
+				 to_unsigned(336,10);
+	----------------------------------------------------
+	wall_x(12) <= to_unsigned(272,10) when stage_select=1 else 
+				 to_unsigned(160,10) when stage_select=2 else  
+				 to_unsigned(208,10) when stage_select=3 else
+				 to_unsigned(160,10);
+
+	wall_y(12) <= to_unsigned(400,10) when stage_select=1 else 
+				 to_unsigned(416,10) when stage_select=2 else 
+				 to_unsigned(272,10) when stage_select=3 else
+				 to_unsigned(448,10);
+	----------------------------------------------------
 	wall_x(13) <= to_unsigned(400,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-		
-	wall_y(13) <= to_unsigned(256,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+				 to_unsigned(272,10) when stage_select=2 else 
+				 to_unsigned(304,10) when stage_select=3 else
+				 to_unsigned(288,10);
+
+	wall_y(13) <= to_unsigned(400,10) when stage_select=1 else 
+				 to_unsigned(416,10) when stage_select=2 else 
+				 to_unsigned(336,10) when stage_select=3 else
+				 to_unsigned(448,10);
 	----------------------------------------------------
-	wall_x(14) <= to_unsigned(368,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-	
-	wall_y(14) <= to_unsigned(288,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	wall_x(14) <= to_unsigned(208,10) when stage_select=1 else 
+				 to_unsigned(400,10) when stage_select=2 else 
+				 to_unsigned(400,10) when stage_select=3 else
+				 to_unsigned(416,10);
+
+	wall_y(14) <= to_unsigned(464,10) when stage_select=1 else 
+				 to_unsigned(416,10) when stage_select=2 else 
+				 to_unsigned(400,10) when stage_select=3 else
+				 to_unsigned(448,10);
 	----------------------------------------------------
-	wall_x(15) <= to_unsigned(224,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
-				 
-	wall_y(15) <= to_unsigned(320,10) when stage_select=1 else 
-				 to_unsigned(1000,10) when stage_select=2 else 
-				 to_unsigned(0,10);
+	wall_x(15) <= to_unsigned(336,10) when stage_select=1 else 
+				 to_unsigned(528,10) when stage_select=2 else 
+				 to_unsigned(496,10) when stage_select=3 else
+				 to_unsigned(544,10);
+
+	wall_y(15) <= to_unsigned(464,10) when stage_select=1 else 
+				 to_unsigned(416,10) when stage_select=2 else 
+				 to_unsigned(448,10) when stage_select=3 else
+				 to_unsigned(448,10);
 
 end;

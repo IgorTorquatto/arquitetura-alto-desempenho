@@ -19,6 +19,7 @@ package the_snake_game_package is
 	constant LENGTH_MAX: integer := 128;
 	constant MAX_X: integer := 640;
 	constant MAX_Y: integer := 480;
+	constant MAX_STAGE: integer := 4;
 	constant HEAD_COLOR: std_logic_vector(2 downto 0):="010";
 	constant BODY_COLOR: std_logic_vector(2 downto 0):="010";
 

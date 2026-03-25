@@ -42,19 +42,19 @@ architecture arch of texts is
    signal font_word           : std_logic_vector(0 to 7);
    signal font_bit            : std_logic;
     
-   --signature label (SIS. DIGITALI)
+   --signature label (ARQ. COMPUTADORES)
    signal row_address_signature_label                       : std_logic_vector(3 downto 0);
    signal bit_address_signature_label                       : std_logic_vector(2 downto 0);
    signal char_address_signature_label                      : std_logic_vector(6 downto 0);
    signal draw_signature_label_on, rd_signature_label_on    : std_logic;
 	
-	--signature2 label (PROF. FALDELLA)
+	--signature2 label (PROF. RAMON)
    signal row_address_signature2_label                      : std_logic_vector(3 downto 0);
    signal bit_address_signature2_label                      : std_logic_vector(2 downto 0);
    signal char_address_signature2_label                     : std_logic_vector(6 downto 0);
    signal draw_signature2_label_on, rd_signature2_label_on  : std_logic;
 	
-	--signature3 label (CESARANO, CROCE)
+	-- signature3 label disabled (old professor name removed)
    signal row_address_signature3_label                      : std_logic_vector(3 downto 0);
    signal bit_address_signature3_label                      : std_logic_vector(2 downto 0);
    signal char_address_signature3_label                     : std_logic_vector(6 downto 0);
@@ -113,6 +113,18 @@ architecture arch of texts is
    signal bit_address_stage_select_2                        : std_logic_vector(2 downto 0);
    signal char_address_stage_select_2                       : std_logic_vector(6 downto 0);
    signal draw_stage_select_2_on, rd_stage_select_2_on      : std_logic;
+
+   -- stageselect3
+   signal row_address_stage_select_3                        : std_logic_vector(3 downto 0);
+   signal bit_address_stage_select_3                        : std_logic_vector(2 downto 0);
+   signal char_address_stage_select_3                       : std_logic_vector(6 downto 0);
+   signal draw_stage_select_3_on, rd_stage_select_3_on      : std_logic;
+
+   -- stageselect4
+   signal row_address_stage_select_4                        : std_logic_vector(3 downto 0);
+   signal bit_address_stage_select_4                        : std_logic_vector(2 downto 0);
+   signal char_address_stage_select_4                       : std_logic_vector(6 downto 0);
+   signal draw_stage_select_4_on, rd_stage_select_4_on      : std_logic;
    
    -- stage_dig
    signal row_address_stage_digit                           : std_logic_vector(3 downto 0);
@@ -158,10 +170,12 @@ architecture arch of texts is
 	
 	-- bar
 	signal bar_on                                            : std_logic;
-	signal bar_x                                             : unsigned(9 downto 0);
-	signal bar_y                                             : unsigned(9 downto 0);
+   signal bar_x                                             : unsigned(9 downto 0);
+   signal bar_y                                             : unsigned(9 downto 0);
 	signal stage_display                                     : std_logic_vector(2 downto 0);
-	signal stage_select_out_temp                             : integer range 1 to 7;
+   signal stage_buttons_prev                                : std_logic_vector(3 downto 0) := (others => '0');
+   signal stage_select_out_temp                             : integer range 1 to MAX_STAGE := 1;
+   signal stage_select_temp                                 : integer range 1 to MAX_STAGE := 1;
 
    begin
 	-- Stage selecting phase before initializing a new game.
@@ -172,17 +186,36 @@ architecture arch of texts is
 							      and (bar_y <= unsigned(PIXEL_Y) and unsigned(PIXEL_Y) < bar_y + 16)
 							      and LEVEL_PICKER_ROM(to_integer(unsigned(PIXEL_Y(3 downto 0)) - bar_y(3 downto 0)))(to_integer(unsigned(PIXEL_X(3 downto 0)) - bar_x(3 downto 0)))='1'
 					            else '0';
-					
-	-- X Coordinate: Stage 1: 160 px - Stage 2: 448 px
-   bar_x          <= "0010100000" when  BUTTONS(2)='1' and STATE(6)='1' else
-			            "0111000000" when  BUTTONS(3)='1' and STATE(6)='1' else
-			            bar_x;
+   -- X/Y Coordinates for the stage selector (2x2 grid)
+   bar_x <= to_unsigned(256,10) when stage_select_temp=1 or stage_select_temp=3 else to_unsigned(512,10);
+   bar_y <= to_unsigned(320,10) when stage_select_temp=1 or stage_select_temp=2 else to_unsigned(352,10);
+
+   process(CLOCK)
+   begin
+      if CLOCK'event and CLOCK='1' then
+         if STATE(6)='1' then
+            if BUTTONS(2)='1' and stage_buttons_prev(2)='0' then
+               if stage_select_temp = 1 then
+                  stage_select_temp <= MAX_STAGE;
+               else
+                  stage_select_temp <= stage_select_temp - 1;
+               end if;
+            elsif BUTTONS(3)='1' and stage_buttons_prev(3)='0' then
+               if stage_select_temp = MAX_STAGE then
+                  stage_select_temp <= 1;
+               else
+                  stage_select_temp <= stage_select_temp + 1;
+               end if;
+            end if;
+         else
+            stage_select_temp <= 1;
+         end if;
+         stage_buttons_prev <= BUTTONS;
+      end if;
+   end process;
 			
-	-- Y Coordinate: 360 px
-	bar_y                   <= "0101101000";
    STAGE_SELECT_OUT        <= stage_select_out_temp;
-	-- picking stage according to the x coordinate
-   stage_select_out_temp   <= 1 when bar_x="0010100000" else 2;
+   stage_select_out_temp   <= stage_select_temp;
    
    -- instantiate font rom
    font_unit: entity work.font_rom
@@ -195,34 +228,35 @@ architecture arch of texts is
 	-- signature label
    draw_signature_label_on     <=
                                  '1' when pix_y(9 downto 5) = 13 and -- 0 -> 31px y
-                                 1 <= pix_x(9 downto 4) and pix_x(9 downto 4) < 16
+                                 0 <= pix_x(9 downto 4) and pix_x(9 downto 4) < 16
 					                  and STATE(7) = '1'
 					                  else '0';
    row_address_signature_label <= std_logic_vector(pix_y(4 downto 1));
    bit_address_signature_label <= std_logic_vector(pix_x(3 downto 1));
 	
-	-- SIS. DIGITALI - PROF. E.FALDELLA - L.CESARANO, A.CROCE
-	
-	-- S   I   S   .   blank D   I   G   I   T   A   L   I   blank -
-	--x53 x49 x53 x2e blank x44 x49 x47 x49 x54 x41 x4c x49 blank x2d
+   -- ARQ.COMPUTADORES - PROF. RAMON
+
+   -- A   R   Q   .   C   O   M   P   U   T   A   D   O   R   E   S
+   --x41 x52 x51 x2e x43 x4f x4d x50 x55 x54 x41 x44 x4f x52 x45 x53
 	
    with pix_x(7 downto 4) select
      char_address_signature_label <=
-        "1010011" when "0001", -- S x53
-        "1001001" when "0010", -- I x49
-        "1010011" when "0011", -- S x53
-        "0101110" when "0100", -- . X2E
-        "0000000" when "0101", -- SPACE
-        "1000100" when "0110", -- D X44
-		  "1001001" when "0111", -- I x49
-        "1000111" when "1000", -- G X47
-        "1001001" when "1001", -- I x49
-        "1010100" when "1010", -- T x54
-        "1000001" when "1011", -- A x41
-        "1001100" when "1100", -- L x4c
-        "1001001" when "1101", -- I X49
-        "0000000" when "1110", -- SPACE
-        "0101101" when "1111", -- - x2d
+            "1000001" when "0000", -- A x41
+            "1010010" when "0001", -- R x52
+            "1010001" when "0010", -- Q x51
+            "0101110" when "0011", -- . x2e
+            "1000011" when "0100", -- C x43
+        "1001111" when "0101", -- O x4f
+            "1001101" when "0110", -- M x4d
+            "1010000" when "0111", -- P x50
+            "1010101" when "1000", -- U x55
+            "1010100" when "1001", -- T x54
+            "1000001" when "1010", -- A x41
+            "1000100" when "1011", -- D x44
+            "1001111" when "1100", -- O x4f
+            "1010010" when "1101", -- R x52
+            "1000101" when "1110", -- E x45
+            "1010011" when "1111", -- S x53
         "0000000" when others;
 	
 	-- signature2 label
@@ -234,10 +268,10 @@ architecture arch of texts is
    row_address_signature2_label <= std_logic_vector(pix_y(4 downto 1));
    bit_address_signature2_label <= std_logic_vector(pix_x(3 downto 1));
 	
-	-- SIS. DIGITALI - PROF. E.FALDELLA - L.CESARANO, A.CROCE
+   -- ARQ. COMPUTADORES - PROF. RAMON
 
-	--P   R   O   F   .   blank  E   .   F   A   L   D   E   L   L   A   -   blank
-	--x50 x52 x4f x46 x2e blank  x45 x2e x46 x41 x4c x44 x45 x4c x4c x41 x2d blank
+   --P   R   O   F   .   blank  R   A   M   O   N   blank  blank
+   --x50 x52 x4f x46 x2e blank  x52 x41 x4d x4f x4e blank  blank
 	
    with pix_x(7 downto 4) select
      char_address_signature2_label <=
@@ -246,50 +280,24 @@ architecture arch of texts is
         "1001111" when "0011", -- O x4f
         "1000110" when "0100", -- F X46
         "0101110" when "0101", -- . X2E
-        "1000110" when "0110", -- F X46
-		  "1000001" when "0111", -- A X41
-        "1001100" when "1000", -- L x4c
-        "1000100" when "1001", -- D X44
-        "1000101" when "1010", -- E x45
-        "1001100" when "1011", -- L x4C
-        "1001100" when "1100", -- L x4c
-        "1000001" when "1101", -- A X41
+            "0000000" when "0110", -- SPACE
+		  "1010010" when "0111", -- R X52
+            "1000001" when "1000", -- A X41
+            "1001101" when "1001", -- M X4D
+            "1001111" when "1010", -- O x4f
+            "1001110" when "1011", -- N x4e
+            "0000000" when "1100", -- SPACE
+            "0000000" when "1101", -- SPACE
         "0000000" when others;
 	
 	-- signature3 label
-   draw_signature3_label_on <=
-      '1' when pix_y(9 downto 5) = 14 and -- 0 -> 31px y
-               17 <= pix_x(9 downto 4) and pix_x(9 downto 4) < 32
-					and STATE(7) = '1'
-					else '0';
+   draw_signature3_label_on <= '0';
    row_address_signature3_label <= std_logic_vector(pix_y(4 downto 1));
    bit_address_signature3_label <= std_logic_vector(pix_x(3 downto 1));
 	
-	-- SIS. DIGITALI - PROF. E.FALDELLA - L.CESARANO, A.CROCE
-
-	--C   E   S   A   R   A   N   O    ,   blank   C   R   O   C   E
-	--x43 x45 x53 x41 x52 x41 x4e x4f x2c  blank   x43 x52 x4f x43 x46
+   -- no third signature text displayed
 	
-   with pix_x(7 downto 4) select
-     char_address_signature3_label <=
-        "1000011" when "0001", -- C x43
-        "1000101" when "0010", -- E x45
-        "1010011" when "0011", -- S X53
-        "1000001" when "0100", -- A X41
-        "1010010" when "0101", -- R x52
-        "1000001" when "0110", -- A X41
-		  "1001110" when "0111", -- N x4e
-        "1001111" when "1000", -- O X4F
-        "0101100" when "1001", -- , X2C
-        "0000000" when "1010", -- SPACE
-        "1000011" when "1011", -- C x43
-        "1010010" when "1100", -- R x52
-        "1001111" when "1101", -- O X4f
-		  "1000011" when "1110", -- C x43
-		  "1000101" when "1111", -- E x45
-        "0000000" when others;
-	
-	-- score label
+   -- score label
    draw_score_label_on <=
       '1' when pix_y(9 downto 5) = 0 and -- 0 -> 31px y
                pix_x(9 downto 4) < 11  else
@@ -406,7 +414,7 @@ architecture arch of texts is
     ----------------------------------------------
 	-- stage 1 label
 	draw_stage_select_1_on <=
-      '1' when pix_y(9 downto 5)= 10 and -- 32->63px y
+            '1' when pix_y(9 downto 5)= 10 and -- 32->63px y
                1 <= pix_x(9 downto 5) and pix_x(9 downto 5) <= 8 and STATE(6) = '1'
           else '0';
    row_address_stage_select_1 <= std_logic_vector(pix_y(4 downto 1));
@@ -425,7 +433,7 @@ architecture arch of texts is
     -------------------------------------------------
 	-- stage 2 label
 	draw_stage_select_2_on <=
-		  '1' when pix_y(9 downto 5)= 10 and -- 32->63px y
+   '1' when pix_y(9 downto 5)= 10 and -- 32->63px y
                9 <= pix_x(9 downto 5) and pix_x(9 downto 5) <= 16 and STATE(6) = '1'
 			  else '0';
    row_address_stage_select_2 <= std_logic_vector(pix_y(4 downto 1));
@@ -441,6 +449,44 @@ architecture arch of texts is
          "0000000" when "1110",
 			"0110010" when "1111", -- 2 x3a
 			"0000000" when others;
+   ----------------------------------------------
+   -- stage 3 label
+   draw_stage_select_3_on <=
+	        '1' when pix_y(9 downto 5)= 11 and -- 32->63px y
+           1 <= pix_x(9 downto 5) and pix_x(9 downto 5) <= 8 and STATE(6) = '1'
+           else '0';
+   row_address_stage_select_3 <= std_logic_vector(pix_y(4 downto 1));
+   bit_address_stage_select_3 <= std_logic_vector(pix_x(3 downto 1));
+
+   with pix_x(7 downto 4) select
+      char_address_stage_select_3 <=
+         "1010011" when "1001", -- S x53
+         "1110100" when "1010", -- t x74
+         "1100001" when "1011", -- a x61
+         "1100111" when "1100", -- g x67
+         "1100101" when "1101", -- e x65
+         "0000000" when "1110",
+         "0110011" when "1111", -- 3 x33
+         "0000000" when others;
+
+   -- stage 4 label
+   draw_stage_select_4_on <=
+	        '1' when pix_y(9 downto 5)= 11 and -- 32->63px y
+           9 <= pix_x(9 downto 5) and pix_x(9 downto 5) <= 16 and STATE(6) = '1'
+              else '0';
+   row_address_stage_select_4 <= std_logic_vector(pix_y(4 downto 1));
+   bit_address_stage_select_4 <= std_logic_vector(pix_x(3 downto 1));
+
+   with pix_x(7 downto 4) select
+      char_address_stage_select_4 <=
+         "1010011" when "1001", -- S x53
+         "1110100" when "1010", -- t x74
+         "1100001" when "1011", -- a x61
+         "1100111" when "1100", -- g x67
+         "1100101" when "1101", -- e x65
+         "0000000" when "1110",
+         "0110100" when "1111", -- 4 x34
+         "0000000" when others;
     ----------------------------------------------
 	-- stage digits
 	draw_stage_digit_on <=
@@ -583,6 +629,8 @@ architecture arch of texts is
 				char_address_stage		 when draw_stage_on='1' 		else
 				char_address_stage_select_1		 when draw_stage_select_1_on='1' 		else
 				char_address_stage_select_2		 when draw_stage_select_2_on='1' 		else
+            char_address_stage_select_3		 when draw_stage_select_3_on='1' 		else
+            char_address_stage_select_4		 when draw_stage_select_4_on='1' 		else
 				char_address_stage_digit   when draw_stage_digit_on='1' 	else
 				char_address_lives		 when draw_lives_on='1' 		else
 				char_address_lives_digit   when draw_lives_digit_on='1' 	else
@@ -604,6 +652,8 @@ architecture arch of texts is
 				row_address_stage		 when draw_stage_on='1' 		else
 				row_address_stage_select_1		 when draw_stage_select_1_on='1' 		else
 				row_address_stage_select_2		 when draw_stage_select_2_on='1' 		else
+            row_address_stage_select_3		 when draw_stage_select_3_on='1' else
+            row_address_stage_select_4		 when draw_stage_select_4_on='1' else
 				row_address_stage_digit	 when draw_stage_digit_on='1' 	else
 				row_address_lives		 when draw_lives_on='1' 		else
 				row_address_lives_digit	 when draw_lives_digit_on='1' 	else
@@ -625,6 +675,8 @@ architecture arch of texts is
 				bit_address_stage	 	 when draw_stage_on='1' 		else 
 				bit_address_stage_select_1	 	 when draw_stage_select_1_on='1' 		else 
 				bit_address_stage_select_2	 	 when draw_stage_select_2_on='1' 		else 
+            bit_address_stage_select_3	 	 when draw_stage_select_3_on='1' 		else 
+            bit_address_stage_select_4	 	 when draw_stage_select_4_on='1' 		else 
 				bit_address_stage_digit	 when draw_stage_digit_on='1' 	else 
 				bit_address_lives		 when draw_lives_on='1' 		else
 				bit_address_lives_digit	 when draw_lives_digit_on='1' 	else
@@ -647,6 +699,8 @@ architecture arch of texts is
 	rd_stage_on <= draw_stage_on  and  font_bit;
 	rd_stage_select_1_on <= draw_stage_select_1_on  and  font_bit;
 	rd_stage_select_2_on <= draw_stage_select_2_on  and  font_bit;
+   rd_stage_select_3_on <= draw_stage_select_3_on  and  font_bit;
+   rd_stage_select_4_on <= draw_stage_select_4_on  and  font_bit;
 	rd_stage_digit_on <= draw_stage_digit_on  and  font_bit;
 	rd_stage_clear_on <= draw_stage_clear_on  and  font_bit;
 	rd_stage_select_on <= draw_stage_select_on  and  font_bit;
@@ -659,7 +713,7 @@ architecture arch of texts is
 	--------------------------------------------------------	
    process(rd_signature3_label_on, rd_signature2_label_on, rd_signature_label_on, rd_score_label_on, rd_score_on, rd_level_on,rd_lives_on , rd_stage_digit_on, rd_stage_on, 
 			rd_level_digit_on, rd_lives_digit_on , rd_game_over_on, rd_new_game_on,rd_level_up_on,rd_pause_on, 
-			rd_stage_clear_on,rd_stage_select_1_on,rd_stage_select_2_on, rd_stage_select_on, bar_on)
+            rd_stage_clear_on,rd_stage_select_1_on,rd_stage_select_2_on, rd_stage_select_3_on, rd_stage_select_4_on, rd_stage_select_on, bar_on)
    begin
 	-- COLOR SELECT of every label in the game.
 		if rd_signature3_label_on = '1' or rd_signature2_label_on = '1' or rd_signature_label_on = '1' or rd_score_label_on = '1' or rd_level_on = '1' or rd_lives_on = '1' or rd_stage_on = '1' then
@@ -668,7 +722,7 @@ architecture arch of texts is
 			TEXT_RGB <= "110";
 		elsif rd_new_game_on = '1' then
 			TEXT_RGB <= "110";
-		elsif (rd_stage_select_on = '1' or rd_stage_select_1_on = '1' or rd_stage_select_2_on = '1' or bar_on = '1') then
+      elsif (rd_stage_select_on = '1' or rd_stage_select_1_on = '1' or rd_stage_select_2_on = '1' or rd_stage_select_3_on = '1' or rd_stage_select_4_on = '1' or bar_on = '1') then
 			TEXT_RGB <= "110";
 		elsif rd_pause_on = '1' then
 			TEXT_RGB <= "100";
@@ -698,5 +752,7 @@ architecture arch of texts is
    &  rd_new_game_on 
    & (bar_on or rd_stage_select_on 
       or rd_stage_select_1_on 
-      or rd_stage_select_2_on) & rd_level_up_on & rd_pause_on & rd_stage_clear_on & rd_game_over_on & '0';
+      or rd_stage_select_2_on
+      or rd_stage_select_3_on
+      or rd_stage_select_4_on) & rd_level_up_on & rd_pause_on & rd_stage_clear_on & rd_game_over_on & '0';
 end arch;

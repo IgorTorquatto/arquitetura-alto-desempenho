@@ -47,5 +47,7 @@ del /Q /F /s db
 rmdir /Q /S db
 del /Q /F /s incremental_db
 rmdir /Q /S incremental_db
+del /Q /F /s output_files
+rmdir /Q /S output_files
 rd db
 rd incremental_db

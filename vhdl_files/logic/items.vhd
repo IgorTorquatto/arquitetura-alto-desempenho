@@ -18,6 +18,7 @@ entity items is
 	 	PIXEL_X										: in std_logic_vector (9 downto 0);
     	PIXEL_Y										: in std_logic_vector (9 downto 0);
 		LEVEL										: in integer range 1 to 7;
+		STAGE											: in integer range 1 to 7;
 		TIMER2_RESET								: out std_logic;
 		TIMER2_START								: out std_logic;    	    
 		ITEM_ON										: out std_logic;
@@ -30,6 +31,106 @@ entity items is
 end items;
 
 architecture arch of items is
+
+	function spawn_item_x(stage_value : integer; slot : integer) return unsigned is
+	begin
+		case stage_value is
+			when 1 =>
+				case slot is
+					when 1 => return to_unsigned(48,10);
+					when 2 => return to_unsigned(560,10);
+					when 3 => return to_unsigned(48,10);
+					when 4 => return to_unsigned(560,10);
+					when 5 => return to_unsigned(304,10);
+					when 6 => return to_unsigned(304,10);
+					when 7 => return to_unsigned(112,10);
+					when others => return to_unsigned(528,10);
+				end case;
+			when 2 =>
+				case slot is
+					when 1 => return to_unsigned(96,10);
+					when 2 => return to_unsigned(544,10);
+					when 3 => return to_unsigned(96,10);
+					when 4 => return to_unsigned(544,10);
+					when 5 => return to_unsigned(192,10);
+					when 6 => return to_unsigned(448,10);
+					when 7 => return to_unsigned(192,10);
+					when others => return to_unsigned(448,10);
+				end case;
+			when 3 =>
+				case slot is
+					when 1 => return to_unsigned(64,10);
+					when 2 => return to_unsigned(576,10);
+					when 3 => return to_unsigned(64,10);
+					when 4 => return to_unsigned(576,10);
+					when 5 => return to_unsigned(176,10);
+					when 6 => return to_unsigned(464,10);
+					when 7 => return to_unsigned(176,10);
+					when others => return to_unsigned(464,10);
+				end case;
+			when others =>
+				case slot is
+					when 1 => return to_unsigned(80,10);
+					when 2 => return to_unsigned(560,10);
+					when 3 => return to_unsigned(80,10);
+					when 4 => return to_unsigned(560,10);
+					when 5 => return to_unsigned(208,10);
+					when 6 => return to_unsigned(432,10);
+					when 7 => return to_unsigned(208,10);
+					when others => return to_unsigned(432,10);
+				end case;
+		end case;
+	end function;
+
+	function spawn_item_y(stage_value : integer; slot : integer) return unsigned is
+	begin
+		case stage_value is
+			when 1 =>
+				case slot is
+					when 1 => return to_unsigned(96,10);
+					when 2 => return to_unsigned(96,10);
+					when 3 => return to_unsigned(368,10);
+					when 4 => return to_unsigned(368,10);
+					when 5 => return to_unsigned(240,10);
+					when 6 => return to_unsigned(304,10);
+					when 7 => return to_unsigned(240,10);
+					when others => return to_unsigned(304,10);
+				end case;
+			when 2 =>
+				case slot is
+					when 1 => return to_unsigned(96,10);
+					when 2 => return to_unsigned(96,10);
+					when 3 => return to_unsigned(368,10);
+					when 4 => return to_unsigned(368,10);
+					when 5 => return to_unsigned(240,10);
+					when 6 => return to_unsigned(304,10);
+					when 7 => return to_unsigned(240,10);
+					when others => return to_unsigned(304,10);
+				end case;
+			when 3 =>
+				case slot is
+					when 1 => return to_unsigned(128,10);
+					when 2 => return to_unsigned(128,10);
+					when 3 => return to_unsigned(336,10);
+					when 4 => return to_unsigned(336,10);
+					when 5 => return to_unsigned(224,10);
+					when 6 => return to_unsigned(272,10);
+					when 7 => return to_unsigned(224,10);
+					when others => return to_unsigned(272,10);
+				end case;
+			when others =>
+				case slot is
+					when 1 => return to_unsigned(112,10);
+					when 2 => return to_unsigned(112,10);
+					when 3 => return to_unsigned(368,10);
+					when 4 => return to_unsigned(368,10);
+					when 5 => return to_unsigned(256,10);
+					when 6 => return to_unsigned(288,10);
+					when 7 => return to_unsigned(256,10);
+					when others => return to_unsigned(288,10);
+				end case;
+		end case;
+	end function;
 		
 	signal item_x_register							: unsigned(9 downto 0);
 	signal item_x_next								: unsigned(9 downto 0);
@@ -87,30 +188,18 @@ begin
 
 	-- random item to pick
 	process(CLOCK)
-		-- 16 is a multiplier for the items spawning. I.E. spawn x coordinate: MIN VALUE: 1 * 16 = 16 px MAX VALUE 39 * 16 = 624 px
-		variable counter_x 		: integer range 0 to 40; -- 40 * 16 = 640 px
-		variable counter_y 		: integer range 0 to 30; -- 30 * 16 = 480 px
 		variable counter_z 		: integer range 1 to 31;
+		variable spawn_slot 		: integer range 1 to 8;
 
 	begin
 		if CLOCK'event and CLOCK = '1' then
-			if counter_x = 39 then
-				counter_x := 1;
-			else
-				counter_x := counter_x + 1;
-			end if;
-
-			if counter_y = 28 then
-				counter_y := 5;
-			else
-				counter_y := counter_y + 1;
-			end if;
-			
 			if counter_z = 31 then
 				counter_z := 1;
 			else
 				counter_z := counter_z + 1;
 			end if;
+
+			spawn_slot := ((counter_z - 1) mod 8) + 1;
 			
 			if counter_z < 10 then
 				item_type_new <= 1;
@@ -123,8 +212,8 @@ begin
 			end if;
 			
 			-- Item spawn
-			item_x_new <= to_unsigned(counter_x * 16, 10);
-			item_y_new <= to_unsigned(counter_y * 16, 10);
+			item_x_new <= spawn_item_x(STAGE, spawn_slot);
+			item_y_new <= spawn_item_y(STAGE, spawn_slot);
 		end if;
 
 	end process;

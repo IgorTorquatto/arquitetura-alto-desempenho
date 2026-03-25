@@ -28,3 +28,15 @@ Selecionar o output_files/the_snake_game.sof
 Deixar marcado a checkbox program/configure
 
 Clicar em start
+
+
+Se aparecer erro: "...the_snake_game.sof is corrupted"
+
+1) Não use um .sof antigo do repositório.
+	Apague as pastas db, incremental_db e output_files (ou rode cleanDirectory.bat) e compile de novo (Start Compilation).
+
+2) No Programmer, remova o arquivo da lista e adicione novamente o novo output_files/the_snake_game.sof.
+
+3) Confira se a sua placa é Cyclone II (DE1 antiga). Se for DE1-SoC/DE2/etc, esse projeto/sof não vai servir.
+
+4) Em Tools -> Programmer -> Hardware Setup, selecione USB-Blaster e em Mode deixe JTAG.

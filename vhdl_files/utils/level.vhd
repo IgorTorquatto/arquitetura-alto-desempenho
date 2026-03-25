@@ -2,6 +2,9 @@ library ieee;
 	use ieee.std_logic_1164.all;
 	use ieee.numeric_std.all;
 
+library libs;
+	use libs.the_snake_game_package.all;
+
 entity level is
 
    port(
@@ -41,11 +44,11 @@ begin
 			
 				elsif ITEM_ATE = '1' then
 				
-					if counter_next_level = 2 * level_temp then
+					if counter_next_level = (3 * level_temp) - 1 then
 					level_temp := level_temp + 1;
 					
 					if level_temp = 6 then
-						if stage_select_tmp < 2 then
+						if stage_select_tmp < MAX_STAGE then
 							stage_select_tmp := stage_select_tmp + 1;
 						end if;
 						stage_clear_temp := '1';

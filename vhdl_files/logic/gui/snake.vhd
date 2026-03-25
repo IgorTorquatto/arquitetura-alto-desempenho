@@ -16,6 +16,7 @@ entity snake is
    		ITEM_X			: in unsigned(9 downto 0);
    		ITEM_Y			: in unsigned(9 downto 0);
    		MOVE			: in std_logic;
+		STAGE			: in integer range 1 to 7;
    		HEAD_X			: out unsigned(9 downto 0);
    		HEAD_Y			: out unsigned(9 downto 0);
    		HEAD_ON_SNAKE	: out std_logic;
@@ -32,6 +33,73 @@ architecture arch of snake is
 	signal head_on									: std_logic;
 	signal head_x_register, head_x_next				: unsigned(9 downto 0);
 	signal head_y_register, head_y_next				: unsigned(9 downto 0);
+	function spawn_x(stage_value : integer; selector : unsigned(1 downto 0)) return unsigned is
+	begin
+		case stage_value is
+			when 1 =>
+				case selector is
+					when "00" => return to_unsigned(64,10);
+					when "01" => return to_unsigned(528,10);
+					when "10" => return to_unsigned(160,10);
+					when others => return to_unsigned(432,10);
+				end case;
+			when 2 =>
+				case selector is
+					when "00" => return to_unsigned(96,10);
+					when "01" => return to_unsigned(544,10);
+					when "10" => return to_unsigned(192,10);
+					when others => return to_unsigned(416,10);
+				end case;
+			when 3 =>
+				case selector is
+					when "00" => return to_unsigned(64,10);
+					when "01" => return to_unsigned(528,10);
+					when "10" => return to_unsigned(160,10);
+					when others => return to_unsigned(432,10);
+				end case;
+			when others =>
+				case selector is
+					when "00" => return to_unsigned(96,10);
+					when "01" => return to_unsigned(544,10);
+					when "10" => return to_unsigned(192,10);
+					when others => return to_unsigned(416,10);
+				end case;
+		end case;
+	end function;
+
+	function spawn_y(stage_value : integer; selector : unsigned(1 downto 0)) return unsigned is
+	begin
+		case stage_value is
+			when 1 =>
+				case selector is
+					when "00" => return to_unsigned(64,10);
+					when "01" => return to_unsigned(96,10);
+					when "10" => return to_unsigned(64,10);
+					when others => return to_unsigned(96,10);
+				end case;
+			when 2 =>
+				case selector is
+					when "00" => return to_unsigned(64,10);
+					when "01" => return to_unsigned(96,10);
+					when "10" => return to_unsigned(128,10);
+					when others => return to_unsigned(160,10);
+				end case;
+			when 3 =>
+				case selector is
+					when "00" => return to_unsigned(128,10);
+					when "01" => return to_unsigned(160,10);
+					when "10" => return to_unsigned(128,10);
+					when others => return to_unsigned(160,10);
+				end case;
+			when others =>
+				case selector is
+					when "00" => return to_unsigned(128,10);
+					when "01" => return to_unsigned(160,10);
+					when "10" => return to_unsigned(96,10);
+					when others => return to_unsigned(64,10);
+				end case;
+		end case;
+	end function;
 	type positon_array is array (0 to LENGTH_MAX) 	of unsigned(9 downto 0);
 	signal body_x									: positon_array;
 	signal body_y									: positon_array;
@@ -44,6 +112,7 @@ architecture arch of snake is
 	signal snake_hit_body_c2 						: std_logic_vector(3 to LENGTH_MAX);
 	signal direction_register, direction_next		: std_logic_vector(1 downto 0);
 	signal item_ate_var								: std_logic;
+	signal spawn_seed										: unsigned(7 downto 0) := x"A5";
 
 	begin
 		HEAD_X 			<= head_x_register;
@@ -58,13 +127,15 @@ architecture arch of snake is
 		begin
 			if CLOCK'event and CLOCK='1' then
 				if RESTART(1)='1' or RESTART(0)='1' then
-					head_x_register 		<= to_unsigned(320,10);
-					head_y_register 		<= to_unsigned(240,10);
+					head_x_register 		<= spawn_x(STAGE, spawn_seed(1 downto 0));
+					head_y_register 		<= spawn_y(STAGE, spawn_seed(1 downto 0));
+					direction_register 		<= "01";
 				else
 					head_x_register 		<= head_x_next;
 					head_y_register 		<= head_y_next;
 					direction_register 		<= direction_next;
 				end if;
+				spawn_seed <= spawn_seed(6 downto 0) & (spawn_seed(7) xor spawn_seed(5) xor spawn_seed(4) xor spawn_seed(3));
 			end if;
 		end process;
 	
@@ -133,16 +204,22 @@ architecture arch of snake is
 		begin
 			if CLOCK'event and CLOCK='1' then
 				if RESTART(1) ='1'  then
-					head_x_next 	<= to_unsigned(320,10);
-					head_y_next 	<= to_unsigned(240,10);
-					body_x 			<= (0 to 2 => to_unsigned(320,10), others => (others => '0'));
-					body_y 			<= (0 => to_unsigned(256,10), 1 => to_unsigned(272,10),2 => to_unsigned(288,10),others => (others => '0'));
+					head_x_next 	<= spawn_x(STAGE, spawn_seed(1 downto 0));
+					head_y_next 	<= spawn_y(STAGE, spawn_seed(1 downto 0));
+					body_x 			<= (others => spawn_x(STAGE, spawn_seed(1 downto 0)));
+					body_y 			<= (0 => spawn_y(STAGE, spawn_seed(1 downto 0)) + BLOCK_SIZE,
+							 1 => spawn_y(STAGE, spawn_seed(1 downto 0)) + (2 * BLOCK_SIZE),
+							 2 => spawn_y(STAGE, spawn_seed(1 downto 0)) + (3 * BLOCK_SIZE),
+							 others => (others => '0'));
 					direction_temp	:="01";
 				elsif RESTART(0) ='1' then
-					head_x_next 	<= to_unsigned(320,10);
-					head_y_next 	<= to_unsigned(240,10);
-					body_x 			<= (others => to_unsigned(320,10));
-					body_y 			<= (0 => to_unsigned(256,10), 1 => to_unsigned(272,10), others => to_unsigned(288,10));
+					head_x_next 	<= spawn_x(STAGE, spawn_seed(1 downto 0));
+					head_y_next 	<= spawn_y(STAGE, spawn_seed(1 downto 0));
+					body_x 			<= (others => spawn_x(STAGE, spawn_seed(1 downto 0)));
+					body_y 			<= (0 => spawn_y(STAGE, spawn_seed(1 downto 0)) + BLOCK_SIZE,
+							 1 => spawn_y(STAGE, spawn_seed(1 downto 0)) + (2 * BLOCK_SIZE),
+							 2 => spawn_y(STAGE, spawn_seed(1 downto 0)) + (3 * BLOCK_SIZE),
+							 others => spawn_y(STAGE, spawn_seed(1 downto 0)) + (3 * BLOCK_SIZE));
 					direction_temp :="01";
 				elsif MOVE='1' then
 			-- Positions Check, if you MOVE in a direction you can ONLY MOVE +-90°
